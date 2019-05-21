@@ -1,0 +1,43 @@
+@import '../sharedStyle.sass'
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+.footerMainContainer
+  height: auto
+  background-color: black
+  color: white
+
+.fontAwsomeIcons
+  display: flex
+  align-items: center
+  justify-content: center
+
+.icons
+  padding: 10px
+.mainList
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 10px
+    margin: 5px
+    text-align: center
+.mainList ul
+  padding: 30px
+
+
+@media screen and (max-width: 1080px)
+  .innerFont
+    font-size: 14px
+    padding: 5px
+
+@media screen and (max-width: 768px)
+    .thirdList
+      display: none
+    .mainList
+      display: flex
+      flex-direction: column
+      text-align: center
+    .mainList ul
+      padding: 10px
