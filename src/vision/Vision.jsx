@@ -6,7 +6,8 @@ class Vision extends Component {
 
     render() {
         return(
-            <div className="test">Vision</div>
+            <div className="visionPage">
+            </div>
         )
     }
 }
