@@ -9,7 +9,7 @@ class BookRoom extends Component {
         date: new Date(),
         rooms: ['Queen Room','King Room', 'Supreme Room' ],
         tier: [1, 2, 3, 4],
-        calendar: true,
+        calendar: false,
         dateFrom: '',
         dateTo: ''
     }
@@ -17,40 +17,51 @@ class BookRoom extends Component {
 
 
     bookFromDate = () => {
-        let calendarView;
 
-        if (this.state.date) {
-            calendarView = <Calendar
-            onChange={this.setDate}
-            value={this.state.date}
-            />
-        }
-        else {
-            calendarView = '';
-        }
-        this.setState({calendar: !this.state.calendar})
+        this.setState({
+            calendar: !this.state.calendar
+        })
     }
 
     bookToDate = () => {
         console.log('funk bookToDate');
+        this.setState({
+            calendar: !this.state.calendar
+        })
     }
 
     setDateFrom = () => {
         // this.setState({dateFrom: this.state.date})
     }
 
-    // setDateTo = () => {}
+    setDateTo = () => {}
 
     setDate = date => {
-        this.setState({ date })
-        this.bookFromDate(date)
+        date.setHours(date.getHours()+12);  // kompensera för tidszoner
+        console.log('Calendar onchange:', date)
+
+        this.setState({ date: date, dateFrom: date.toISOString().substring(0, 10) })
+    }
+
+    setDate = date => {
+        date.setHours(date.getHours()+12);  // kompensera för tidszoner
+        console.log('Calendar onchange:', date)
+
+        this.setState({ date: date, dateTo: date.toISOString().substring(0, 10) })
     }
 
     render() {
-        // console.log('date: ', this.state.date);
-        // console.log('datefrom: ', this.state.datefrom);
+        console.log('calendarView:', this.state.calendarView);
+        console.log('date: ', this.state.date);
         let rooms = this.state.rooms.map((room, index) => {return <option key={index}> {room} </option> })
         let tiers = this.state.tier.map((tier, index) => {return <option key={index}> {tier} </option> })
+        let calendarView = null;
+        if( this.state.calendar ) {
+            calendarView = <Calendar
+                onChange={this.setDate}
+                value={this.state.date}
+                />
+        }
 
         return(
             <div className="bookContainer">
@@ -59,19 +70,18 @@ class BookRoom extends Component {
 
             <select> {tiers} </select>
 
-            <span onClick={this.bookFromDate}> Date from
-                <input onChange={this.setDateFrom} value={this.state.dateFrom}
-                />
-                {this.calendarView}
+            <span onClick={this.bookFromDate} className="dateTo"> Date from
+                <input className="dateValue" onChange={this.setDateFrom} value={this.state.dateFrom} />
+
             </span>
 
+            {calendarView}
 
-            <span onClick={this.bookToDate}> Date to <input /> </span>
 
-            {/*<Calendar
-                onChange={this.setDate}
-                value={this.state.date}
-            />*/}
+            <span onClick={this.bookToDate}> Date to
+                <input className="dateValue" onChange={this.setDateTo} value={this.state.dateTo} />
+            </span>
+
             </div>
         )
     }
