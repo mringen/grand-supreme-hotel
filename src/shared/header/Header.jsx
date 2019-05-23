@@ -25,6 +25,7 @@ class Header extends Component {
                 <li>{this.props.landingLink}</li>
                 <li>{this.props.visionLink}</li>
                 <li>{this.props.bookingLink}</li>
+                <li>{this.props.roomMakerLink}</li>
               </ul>
               <div className="burger" onClick={this.toggleNav}>
                 <div className="line1"></div>
@@ -35,6 +36,7 @@ class Header extends Component {
                 <li onClick={this.toggleNav}>{this.props.landingLink}</li>
                 <li onClick={this.toggleNav}>{this.props.visionLink}</li>
                 <li onClick={this.toggleNav}>{this.props.bookingLink}</li>
+                <li onClick={this.toggleNav}>{this.props.roomMakerLink}</li>
               </ul>
             </div>
         )
