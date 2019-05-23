@@ -1,0 +1,75 @@
+@import '../sharedStyle.sass'
+
+
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box;
+
+.not-active-burger
+  display: none
+
+.navMainContainer
+  display: flex
+  justify-content: space-around
+  align-items: center
+  min-height: 8vh
+  background-color: black
+
+
+.loggo
+  color: white
+  text-transform: uppercase
+  letter-spacing: 5px
+  font-size: 20px
+.navLinks
+  display: flex
+  justify-content: space-around
+  width: 30%
+  text-decoration: none
+a
+  color: white
+  text-decoration: none
+  letter-spacing: 3px
+  font-weight: bold
+  font-size: 14px
+li
+  list-style: none
+
+//Burger CSS at big screen
+.burger
+  display: none
+
+.burger div
+  width: 25px
+  height: 3px
+  background-color: white
+  margin: 5px
+
+  //Burger CSS at mobile
+@media screen and (max-width: 1080px)
+  .navLinks
+    width: 60%
+
+@media screen and (max-width: 768px)
+  body
+   overflow-x: hidden
+  .navLinks li
+    opacity: 0
+  .burger
+    display: block
+    cursor: pointer
+  .active-burger
+     position: absolute
+     right: 0px
+     height: 100vw
+     top: 8vh
+     background-color: black
+     display: flex
+     flex-direction: column
+     align-items: center
+     width: 100%
+     transform: translateX(0%)
+     transition: transform 0.5s ease-in
+     z-index: 100

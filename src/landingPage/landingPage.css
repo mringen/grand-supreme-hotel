@@ -1,4 +1,4 @@
-
+/*Css for hero img starts*/
 .hero-container {
   height: 50vw;
   margin: 0;
@@ -37,4 +37,42 @@
 .hero-text button:hover {
   background-color: #555;
   color: white;
+}
+/*Css for hero img ends*/
+
+.activitisMain {
+  margin: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  height: 50vw;
+
+}
+.activitisMain div {
+  border: 1px solid black;
+  margin: 10px;
+  justify-content: space-around;
+  height: auto;
+  width: 50vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.activitis {
+  background-image: url('../shared/img/adam-wilson-416248-unsplash.jpg');
+}
+
+@media screen and (max-width: 600px) {
+  .activitisMain {
+    flex-direction: column;
+    height: 500px;
+  }
+  .activitisMain div {
+    margin: 10px;
+    width: auto;
+    height: 30vw;
+    justify-content: space-around;
+  }
+
 }
