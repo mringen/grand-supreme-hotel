@@ -2,24 +2,25 @@
 
 .bookContainer
     background-color: $mediumTurquoise-color
-    height: 20em
+    height: 100%
     width: 100%
-    padding: 2em 0em 0em 2em
+    padding: 1em
+
+    h1
+        margin-bottom: 1em
 
     input
         outline: none
         height: 1.8em
         width: 10em
-        font-size: 1.3em
+        font-size: 1.2em
         border-radius: 10px
 
     select
-        background-color: $tan-color
+        background-color: white
         height: 2em
-        width: 10em
+        width: 100%
         font-size: 1.3em
-        &:first-child
-            margin-right: 1em
 
     .dateTo
         &:hover
@@ -29,9 +30,24 @@
         font-size: 1.3em
 
     .dateValue
-        display: inline-block
-        margin: 0em 1em 0em 1em
+        margin-bottom: 1em
+        display: block
+        margin: 0em auto 0em auto
         border-radius: 10px
         background-color: white
-        height: 2.4em
-        width: 10em
+        height: 2.3em
+        width: 100%
+
+    .calendar
+        position: absolute
+
+    .container
+        font-size: 1.2
+        margin-top: 1em
+
+    .containerRoomPerson
+        margin-top: 1em
+        display: inline-block
+        width: 45%
+        margin-right: 1em
+        &first-child
