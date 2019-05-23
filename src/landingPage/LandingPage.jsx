@@ -15,8 +15,16 @@ class LandingPage extends Component {
                 </div>
               </div>
             </div>
-            <div>
-              show me
+            <div className="activitisMain">
+              <div className="resturang">
+                Show me!
+              </div>
+              <div className="activitis">
+                Show me!
+               </div>
+              <div className="facillitys">
+                Show me!
+              </div>
             </div>
           </div>
         )
