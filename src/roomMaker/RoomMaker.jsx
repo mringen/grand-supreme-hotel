@@ -8,9 +8,9 @@ class RoomMaker extends React.Component{
 
     handleClickAdd = e => {
         let counter = 8;
-        let kingRooms = 3;
+        let roomsToAdd = 1;
 
-        for (let i = 0; i < kingRooms; i++) {
+        for (let i = 0; i < roomsToAdd; i++) {
             counter ++;
             console.log('this is counter', counter)
             let obj = {
@@ -19,8 +19,12 @@ class RoomMaker extends React.Component{
                     fromDate: '',
                     toDate: '',
                     availableRoom: true,
+                    Balcony: 'No',
+                    Oceanview: 'No',
+                    FreeMinibar: 'Yes',
+                    FreeRoomService: 'Yes',
                  };
-                const collectionRef = firebase.firestore().collection('roomType');
+                const collectionRef = firebase.firestore().collection('HotelRooms');
                 collectionRef.add(obj)
                 .then(() => {
 

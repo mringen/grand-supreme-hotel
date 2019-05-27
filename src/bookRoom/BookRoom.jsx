@@ -8,7 +8,7 @@ class BookRoom extends Component {
 
     state = {
         date: new Date(),
-        roomType: ['Queen Room','KingRoom', 'Supreme Room' ],
+        roomType: ['Queen Room','King Room', 'Supreme Room' ],
         numberOfGuest: [1, 2, 3, 4],
         calendarFrom: false,
         calendarTo: false,
