@@ -17,9 +17,9 @@ function App() {
     <Router>
       <div className="App">
         <Header
-          landingLink={<Link to="/LandingPage/">Landing </Link>}
-          visionLink={<Link to="/Vision/">vision </Link>}
-          bookingLink={<Link to="/BookRoom/">BookRoom </Link>}
+          landingLink={<Link to="/LandingPage/">Home</Link>}
+          visionLink={<Link to="/Vision/">Our Vision</Link>}
+          bookingLink={<Link to="/BookRoom/">Book a room </Link>}
           roomMakerLink={<Link to="/RoomMaker/"> Admin</Link>}/>
 
 

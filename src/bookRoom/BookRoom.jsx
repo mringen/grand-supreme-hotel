@@ -72,11 +72,6 @@ class BookRoom extends Component {
           date: date, fromDate: date.toISOString().substring(0, 10),
           toggleCheckInCalendar: false,
          })
-
-
-
-
-
     }
 
 
@@ -99,7 +94,7 @@ class BookRoom extends Component {
     handleNumberOfGuest = (e) => {
         this.setState({numberOfGuestSelected: e.target.value})
     }
-
+    //testing stuff out
 
 
     render() {
