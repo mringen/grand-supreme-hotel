@@ -8,7 +8,7 @@ class BookRoom extends Component {
 
     state = {
         date: new Date(),
-        roomType: ['Queen Room','King Room', 'Supreme Room' ],
+        roomType: ['Queen Room','KingRoom', 'Supreme Room' ],
         numberOfGuest: [1, 2, 3, 4],
         calendarFrom: false,
         calendarTo: false,
@@ -16,23 +16,48 @@ class BookRoom extends Component {
         toDate: '',
         selectedRoomType: 'Queen Room',
         numberOfGuestSelected: 1,
-        showRooms: false
-    }
+        showRooms: false,
+
+        //henriks kod för att blurra calendar on clicked
+        toggleCheckInCalendar: true,
+        toggleCheckOutCalendar: true,
+      }
+
     // let newDate;
 
+    toggleFromCalandar = () => {
+      this.setState({
+        toggleCheckInCalendar: true,
+      })
+    }
+    toggleToCalandar = () => {
+      this.setState({
+        toggleCheckOutCalendar: true,
+      })
+    }
 
     bookFromDate = () => {
+      if(!this.state.toggleCheckInCalendar) {
 
+      } else {
         this.setState({
-            calendarFrom: !this.state.calendarFrom
+          calendarFrom: !this.state.calendarFrom,
+          toggleCheckInCalendar: true,
         })
+
+      }
     }
 
     bookToDate = () => {
-        console.log('funk bookToDate');
+      if(!this.state.toggleCheckOutCalendar) {
+
+      } else {
         this.setState({
-            calendarTo: !this.state.calendarTo
+          calendarTo: !this.state.calendarTo,
+          toggleCheckOutCalendar: true,
         })
+
+      }
     }
 
     // setDateFrom = () => {
@@ -43,16 +68,25 @@ class BookRoom extends Component {
 
     setDateFrom = date => {
         date.setHours(date.getHours()+12);  // kompensera för tidszoner
-        console.log('Calendar onchange:', date)
+        this.setState({
+          date: date, fromDate: date.toISOString().substring(0, 10),
+          toggleCheckInCalendar: false,
+         })
 
-        this.setState({ date: date, fromDate: date.toISOString().substring(0, 10) })
+
+
+
+
     }
 
-    setDateTo = date => {
-        date.setHours(date.getHours()+12);  // kompensera för tidszoner
-        console.log('Calendar onchange:', date)
 
-        this.setState({ date: date, toDate: date.toISOString().substring(0, 10) })
+    setDateTo = date => {
+      console.log('selected date')
+        date.setHours(date.getHours()+12);  // kompensera för tidszoner
+        this.setState({
+          date: date, toDate: date.toISOString().substring(0, 10),
+          toggleCheckOutCalendar: false,
+         })
     }
     showRoomsHandler = () => {
         this.setState({
@@ -66,12 +100,9 @@ class BookRoom extends Component {
         this.setState({numberOfGuestSelected: e.target.value})
     }
 
+
+
     render() {
-        // console.log('dateFrom: ', this.state.fromDate);
-        // console.log('dateFrom: ', this.state.toDate);
-        //
-        // console.log('selectedRoomType:', this.state.selectedRoomType);
-        // console.log('selectedRoomType:', this.state.numberOfGuestSelected);
 
         let roomType = this.state.roomType.map((room, index) => {return <option key={index} value={room}> {room} </option> })
         let numberOfGuests = this.state.numberOfGuest.map((numberOfGuest, index) => {return <option key={index} value={numberOfGuest}> {numberOfGuest} </option> })
@@ -81,26 +112,32 @@ class BookRoom extends Component {
             calendarCheckInDate = <Calendar
                 onChange={this.setDateFrom}
                 value={this.state.date}
+                onClickDay={this.displayCheckIn}
+                className={this.state.toggleCheckInCalendar ? 'active' : 'unActive'}
                 />
         }
         if( this.state.calendarTo ) {
             calendarCheckOutDate = <Calendar
                 onChange={this.setDateTo}
                 value={this.state.date}
+                onClickDay={this.displayCheckOut}
+                className={this.state.toggleCheckOutCalendar ? 'active' : 'unActive'}
                 />
         }
+
         let showRooms = this.state.showRooms;
-        let test;
+        let listOfRooms;
         if (showRooms) {
-            test = <Database />
+            listOfRooms = <Database selectedRoomType={this.state.selectedRoomType} />
         }
+
         return(
             <div className="bookContainer">
                 <h1>Choose Room</h1>
 
                 <div className="container">
                     <span onClick={this.bookFromDate} className="toDate"> Date from
-                        <input className="dateValue" onChange={this.setDateFrom} value={this.state.fromDate} />
+                        <input className="dateValue" onClick={this.toggleFromCalandar} onChange={this.setDateFrom} value={this.state.fromDate} />
                     </span>
                     <span className="calendar">{calendarCheckInDate}</span>
                 </div>
@@ -108,7 +145,7 @@ class BookRoom extends Component {
 
                 <div className="container">
                     <span onClick={this.bookToDate} className="toDate"> Date to
-                        <input className="dateValue" onChange={this.setDateTo} value={this.state.toDate} />
+                        <input className="dateValue"  onClick={this.toggleToCalandar} onChange={this.setDateTo} value={this.state.toDate} />
                     </span>
                     <span className="calendar">{calendarCheckOutDate}</span>
                 </div>
@@ -121,8 +158,8 @@ class BookRoom extends Component {
                     <select onChange={this.handleNumberOfGuest}> {numberOfGuests} </select>
                 </div>
 
-                {test}
                 <button onClick={this.showRoomsHandler}>Show Rooms</button>
+                {listOfRooms}
             </div>
         )
     }
