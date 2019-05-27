@@ -7,14 +7,14 @@ class RoomMaker extends React.Component{
 
 
     handleClickAdd = e => {
-        let counter = 4;
+        let counter = 8;
         let kingRooms = 3;
 
         for (let i = 0; i < kingRooms; i++) {
             counter ++;
             console.log('this is counter', counter)
             let obj = {
-                    roomType: 'Queen Room',
+                    roomType: 'Supreme Room',
                     roomNumber: counter,
                     fromDate: '',
                     toDate: '',

@@ -20,7 +20,7 @@ class Header extends Component {
     render() {
         return(
             <div className="navMainContainer">
-              <h4 className="loggo">Luxury Hotel</h4>
+              <h4 className="loggo">Hopkins Bay Luxury Hotel</h4>
               <ul className="navLinks">
                 <li>{this.props.landingLink}</li>
                 <li>{this.props.visionLink}</li>

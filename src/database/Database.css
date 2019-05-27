@@ -1,0 +1,23 @@
+
+.Rooms {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.Room {
+  border: 1px solid black;
+  display: flex;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+
+@media screen and (max-width: 600px) {
+  .Room {
+    flex-direction: column;
+  }
+  img {
+    width: 100%
+  }
+}
