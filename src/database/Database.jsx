@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+import './Database.css'
 
-const Database = () => {
-
+const Database = (props) => {
+  let loggo;
     const [roomData, setRoomData] = useState(null);
 
     useEffect(() => {
@@ -18,27 +19,42 @@ const Database = () => {
                     id: doc.id
                 };
                 tierList.push(tierObj);
-                console.log(tierList);
             })
             setRoomData(tierList)
         })
     }, []);
-    console.log(roomData);
+
 
     let listRoom = null;
     if(roomData) {
         listRoom = roomData.map(rooms => {
-            return <li key={rooms.id}>{rooms.roomType}</li>
+
+          if(rooms.roomType === 'KingRoom') {
+            loggo = require('../shared/roomIMG/hotel-room-1447201_1920.jpg');
+          }
+          if (rooms.roomType === 'Queen Room') {
+            loggo = require('../shared/roomIMG/hotel-room-3652757_1920.jpg');
+          }
+          if (rooms.roomType === 'Supreme Room') {
+            loggo = require('../shared/roomIMG/apartment-1822409_1920.jpg');
+          }
+          if (props.selectedRoomType === rooms.roomType) {
+
+            return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div>{rooms.roomType}</div></li>
+          } else {
+
+          }
         })
     }
 
-
         return(
             <div>
-                <ul>{listRoom}</ul>
+                <ul
+                  className="Rooms">
+                  {listRoom}
+                </ul>
             </div>
         )
-
 }
 
 export default Database
