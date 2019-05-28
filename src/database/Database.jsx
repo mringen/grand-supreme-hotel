@@ -1,12 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ConfirmBooking from '../confirmBooking/ConfirmBooking'
 
 import './Database.css'
 
 const Database = (props) => {
   let loggo;
   let roomInfo;
+  let goToConfirm = props.confirmBookingLink;
+
+
+
     const [roomData, setRoomData] = useState(null);
 
     useEffect(() => {
@@ -26,6 +32,7 @@ const Database = (props) => {
     }, []);
 
 
+
     let listRoom = null;
     if(roomData) {
         listRoom = roomData.map(rooms => {
@@ -33,6 +40,8 @@ const Database = (props) => {
           if(rooms.roomType === 'KingRoom') {
             loggo = require('../shared/roomIMG/hotel-room-1447201_1920.jpg');
             roomInfo = <p>This is our smallest and most cozy of our hotelrooms, but it still holds our premium standard and we promise you that this room will fit your every need.</p>
+            goToConfirm = props.confirmBookingLink;
+
           }
           if (rooms.roomType === 'Queen Room') {
             loggo = require('../shared/roomIMG/hotel-room-3652757_1920.jpg');
@@ -47,20 +56,25 @@ const Database = (props) => {
             <div>
               <h3>{rooms.roomType}</h3>
               {roomInfo}
-              <button>Book This Room</button>
+              <button><Link to="/ConfirmBooking/">Book Now</Link></button>
             </div></li>
           } else {
 
           }
+
         })
     }
 
+
         return(
             <div>
+
                 <ul
                   className="Rooms">
                   {listRoom}
+
                 </ul>
+<button>{props.confirmBookingLink}</button>
             </div>
         )
 }
