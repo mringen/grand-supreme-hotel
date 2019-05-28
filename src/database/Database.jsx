@@ -24,7 +24,6 @@ const Database = (props) => {
         })
     }, []);
 
-
     let listRoom = null;
     if(roomData) {
         listRoom = roomData.map(rooms => {
@@ -40,12 +39,19 @@ const Database = (props) => {
           }
           if (props.selectedRoomType === rooms.roomType) {
 
-            return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div>{rooms.roomType}</div></li>
+            return <li className="Room"key={rooms.id}>
+            <img src={loggo} alt="Smiley face" height="242" width="342"/>
+            <div>{rooms.roomType}
+            <button   className="completeBooking">Complete booking
+            </button>
+            </div>
+            </li>
           } else {
 
           }
         })
     }
+
 
         return(
             <div>

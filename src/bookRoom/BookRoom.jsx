@@ -100,6 +100,10 @@ class BookRoom extends Component {
         this.setState({numberOfGuestSelected: e.target.value})
     }
 
+    // completeBooking = () => {
+    //     console.log('completeBooking func:', this.state.roomType)
+    // };
+
 
 
     render() {
@@ -128,7 +132,8 @@ class BookRoom extends Component {
         let showRooms = this.state.showRooms;
         let listOfRooms;
         if (showRooms) {
-            listOfRooms = <Database selectedRoomType={this.state.selectedRoomType} />
+            listOfRooms = <Database
+                selectedRoomType={this.state.selectedRoomType} />
         }
 
         return(
@@ -157,7 +162,6 @@ class BookRoom extends Component {
                 <div className="containerRoomPerson"> Person
                     <select onChange={this.handleNumberOfGuest}> {numberOfGuests} </select>
                 </div>
-
                 <button onClick={this.showRoomsHandler}>Show Rooms</button>
                 {listOfRooms}
             </div>

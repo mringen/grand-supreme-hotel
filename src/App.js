@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, setState} from 'react';
 // import firebase from 'firebase/app';
 // import 'firebase/firestore';
 
@@ -13,6 +13,10 @@ import RoomMaker from './roomMaker/RoomMaker'
 
 
 function App() {
+
+    // const [bookingState, setBookingState] = useState(null);
+
+
   return (
     <Router>
       <div className="App">
