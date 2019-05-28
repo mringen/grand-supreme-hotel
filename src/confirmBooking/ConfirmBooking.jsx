@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Database from '../database/Database';
+// import Database from '../database/Database';
 
 class ConfirmBooking extends Component {
 
