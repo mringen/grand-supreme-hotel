@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import './BookRoom.sass'
 import Calendar from 'react-calendar';
 import Database from './../database/Database';
-
-
+import DatabaseRoomInfo from '../confirmBooking/DatabaseRoomInfo'
+import ConfirmBooking from '../confirmBooking/ConfirmBooking';
 class BookRoom extends Component {
 
     state = {
@@ -85,6 +85,7 @@ class BookRoom extends Component {
         this.setState({
             showRooms: !this.state.showRooms
         })
+
     }
 
     handleSelectedRoom = (e) => {
@@ -96,7 +97,6 @@ class BookRoom extends Component {
 
 
     render() {
-
         let roomType = this.state.roomType.map((room, index) => {return <option key={index} value={room}> {room} </option> })
         let numberOfGuests = this.state.numberOfGuest.map((numberOfGuest, index) => {return <option key={index} value={numberOfGuest}> {numberOfGuest} </option> })
         let calendarCheckInDate = null;
@@ -108,8 +108,10 @@ class BookRoom extends Component {
                 minDate={this.state.date}
                 onClickDay={this.displayCheckIn}
                 className={this.state.toggleCheckInCalendar ? 'active' : 'unActive'}
+
                 />
         }
+
         if( this.state.calendarTo ) {
             calendarCheckOutDate = <Calendar
                 onChange={this.setDateTo}
@@ -123,16 +125,23 @@ class BookRoom extends Component {
         let showRooms = this.state.showRooms;
         let listOfRooms;
         if (showRooms) {
+
             listOfRooms =
+
             <Database
               selectedRoomType={this.state.selectedRoomType}
               renderRooms={this.handleRoomObject}
               fromDate={this.state.fromDate}
               toDate={this.state.toDate} />
-        }
 
+
+        }
+let fml = this.state.toDate
         return(
+
+
             <div className="bookContainer">
+
                 <h1>Choose Room</h1>
                 <button onClick={this.handleRoomObject}>Click me to show me the Room object.</button>
 
@@ -161,6 +170,8 @@ class BookRoom extends Component {
 
                 <button onClick={this.showRoomsHandler}>Show Rooms</button>
                 {listOfRooms}
+                  <DatabaseRoomInfo  toDate={fml}/>
+
             </div>
         )
     }

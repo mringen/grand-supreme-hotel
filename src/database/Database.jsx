@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {Link } from "react-router-dom";
 // import ConfirmBooking from '../confirmBooking/ConfirmBooking'
-
+import DatabaseRoomInfo from './../confirmBooking/DatabaseRoomInfo';
 import './Database.css'
 
 const Database = (props) => {
@@ -28,6 +28,7 @@ const Database = (props) => {
             setRoomData(tierList)
         })
     }, []);
+
 
     let listRoom = null;
     if(roomData) {
@@ -59,21 +60,16 @@ const Database = (props) => {
 
           if (rooms.roomType === 'Supreme Room') {
             loggo = require('../shared/roomIMG/apartment-1822409_1920.jpg');
-            roomInfo = <p>The king of kings, the supreme room. This room is a true beauty and screams premium and luxury design</p>
-              roomStats =
-              <ul>
-                <li>Balcony: {rooms.Balcony}</li>
-                <li>Ocean view: {rooms.Oceanview}</li>
-                <li>Free Minibar: {rooms.FreeMinibar}</li>
-                <li>Free RoomService: {rooms.FreeRoomService}</li>
-              </ul>
           }
           if (props.selectedRoomType === rooms.roomType) {
+
+
             let  bookings = rooms.bookings;
             let falseFromDate = props.fromDate;
             let falseToDate = props.toDate;
             let counter = 0;
             let i;
+
             if (rooms.bookings) {
               for (i = 0; i < bookings.length; i++) {
 
@@ -83,13 +79,15 @@ const Database = (props) => {
               }
               if(counter === i){
                 return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
-                        <Link to="/ConfirmBooking/"><button>Book Now</button></Link>
+                        <Link to="/ConfirmBooking/"><button >Book Now</button></Link>
+
               </div></li>
               } else {
                 return false;
               }
             }
             else {
+
                 return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
                 <Link to="/ConfirmBooking/"><button>Book Now</button></Link>
                 </div></li>
@@ -99,14 +97,17 @@ const Database = (props) => {
     })
 };
 
+
         return(
 
 
             <div>
+
                 <ul
                   className="Rooms">
                   {listRoom}
                 </ul>
+                
             </div>
 
         )
