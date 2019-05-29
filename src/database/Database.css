@@ -1,12 +1,10 @@
 
 .Rooms {
-
   display: flex;
   flex-direction: column;
 }
 
 .Room {
-  
   display: flex;
   margin-bottom: 10px;
   background-color: white;

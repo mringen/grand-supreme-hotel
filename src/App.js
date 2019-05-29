@@ -20,7 +20,7 @@ function App() {
                 bookingLink={<Link to="/BookRoom/">BookRoom </Link>}
                 roomMakerLink={<Link to="/RoomMaker/"> Admin</Link>}
             />
-
+      
             <Route path="/ConfirmBooking" component={ConfirmBooking}/>
             <Route path="/LandingPage/"  component={LandingPage} />
             <Route path="/Vision/"  component={Vision} />
