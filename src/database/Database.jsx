@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import ConfirmBooking from '../confirmBooking/ConfirmBooking'
 
 import './Database.css'
 
 const Database = (props) => {
   let loggo;
   let roomInfo;
-  let roomStats;
-  let test;
+
     const [roomData, setRoomData] = useState(null);
 
     useEffect(() => {
@@ -27,10 +28,10 @@ const Database = (props) => {
         })
     }, []);
 
-
     let listRoom = null;
     if(roomData) {
         listRoom = roomData.map(rooms => {
+
 
           if (rooms.roomType === 'Queen Room') {
             loggo = require('../shared/roomIMG/hotel-room-3652757_1920.jpg');
@@ -79,7 +80,9 @@ const Database = (props) => {
                 }
               }
               if(counter === i){
-                return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}<button>Click</button></div></li>
+                return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
+                        <Link to="/ConfirmBooking/"><button>Book Now</button></Link>
+              </div></li>
               } else {
                 return;
               }
@@ -87,7 +90,6 @@ const Database = (props) => {
             else {
                 return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}<button>Click</button></div></li>
             }
-
             }
         })
     }

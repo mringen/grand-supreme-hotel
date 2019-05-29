@@ -89,6 +89,7 @@ class BookRoom extends Component {
             showRooms: !this.state.showRooms
         })
     }
+
     handleSelectedRoom = (e) => {
         this.setState({selectedRoomType: e.target.value})
     }
