@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 // import ConfirmBooking from '../confirmBooking/ConfirmBooking'
 
 import './Database.css'
@@ -9,6 +9,7 @@ import './Database.css'
 const Database = (props) => {
   let loggo;
   let roomInfo;
+  let roomStats;
 
     const [roomData, setRoomData] = useState(null);
 
@@ -72,8 +73,9 @@ const Database = (props) => {
             let falseFromDate = props.fromDate;
             let falseToDate = props.toDate;
             let counter = 0;
+            let i;
             if (rooms.bookings) {
-              for (let i = 0; i < bookings.length; i++) {
+              for (i = 0; i < bookings.length; i++) {
 
                 if((falseToDate <= bookings[i].fromDate && falseFromDate < bookings[i].toDate) || (falseToDate > bookings[i].fromDate && falseFromDate > bookings[i].toDate) ) {
                   counter ++;
@@ -84,23 +86,29 @@ const Database = (props) => {
                         <Link to="/ConfirmBooking/"><button>Book Now</button></Link>
               </div></li>
               } else {
-                return;
+                return false;
               }
             }
             else {
-                return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}<button>Click</button></div></li>
+                return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
+                <Link to="/ConfirmBooking/"><button>Book Now</button></Link>
+                </div></li>
             }
-            }
-        })
-    }
+        }
+        return listRoom
+    })
+};
 
         return(
+
+
             <div>
                 <ul
                   className="Rooms">
                   {listRoom}
                 </ul>
             </div>
+
         )
 }
 
