@@ -8,6 +8,8 @@ class BookRoom extends Component {
 
     state = {
         date: new Date(),
+        checkinDate: new Date(),
+        checkoutDate: new Date(),
         roomType: ['Queen Room','King Room', 'Supreme Room' ],
         numberOfGuest: [1, 2, 3, 4],
         calendarFrom: false,
@@ -21,7 +23,7 @@ class BookRoom extends Component {
         //henriks kod för att blurra calendar on clicked
         toggleCheckInCalendar: true,
         toggleCheckOutCalendar: true,
-  
+
       };
 
     // let newDate;
@@ -61,26 +63,21 @@ class BookRoom extends Component {
       }
     }
 
-    // setDateFrom = () => {
-    //     // this.setState({fromDate: this.state.date})
-    // }
-
-    // setDateTo = () => {}
-
     setDateFrom = date => {
         date.setHours(date.getHours()+12);  // kompensera för tidszoner
         this.setState({
-          date: date, fromDate: date.toISOString().substring(0, 10),
+          checkinDate: date, fromDate: date.toISOString().substring(0, 10),
           toggleCheckInCalendar: false,
          })
+         date.setHours(date.getHours()+13);
     }
 
 
-    setDateTo = date => {
+    setDateTo = checkinDate => {
       console.log('selected date')
-        date.setHours(date.getHours()+12);  // kompensera för tidszoner
+        checkinDate.setHours(checkinDate.getHours()+12);  // kompensera för tidszoner
         this.setState({
-          date: date, toDate: date.toISOString().substring(0, 10),
+          checkoutDate: checkinDate, toDate: checkinDate.toISOString().substring(0, 10),
           toggleCheckOutCalendar: false,
          })
     }
@@ -97,32 +94,6 @@ class BookRoom extends Component {
         this.setState({numberOfGuestSelected: e.target.value})
     }
 
-    // { fromDate: '2019-05-03', toDate: '2019-05-10'},
-    // { fromDate: '2019-05-10', toDate: '2019-05-17'},
-    // { fromDate: '2019-05-20', toDate: '2019-05-22'},
-    // handleRoomObject = () => {
-    //   let  bookings = this.state.bookings;
-    //   let falseFromDate = this.state.fromDate;
-    //   let falseToDate = this.state.toDate;
-    //   let counter = 0;
-    //   for (let i = 0; i < bookings.length; i++) {
-    //     if((falseToDate <= bookings[i].fromDate && falseFromDate < bookings[i].toDate) || (falseToDate > bookings[i].fromDate && falseFromDate > bookings[i].toDate) ) {
-    //       counter ++;
-    //     }
-    //   }
-    //   if(counter === 3){
-    //     console.log('Render the room')
-    //   } else {
-    //
-    //     console.log('dont render this shit')
-    //   }
-    //
-    // }
-
-
-
-
-
 
     render() {
 
@@ -134,6 +105,7 @@ class BookRoom extends Component {
             calendarCheckInDate = <Calendar
                 onChange={this.setDateFrom}
                 value={this.state.date}
+                minDate={this.state.date}
                 onClickDay={this.displayCheckIn}
                 className={this.state.toggleCheckInCalendar ? 'active' : 'unActive'}
                 />
@@ -142,6 +114,7 @@ class BookRoom extends Component {
             calendarCheckOutDate = <Calendar
                 onChange={this.setDateTo}
                 value={this.state.date}
+                minDate={this.state.checkinDate}
                 onClickDay={this.displayCheckOut}
                 className={this.state.toggleCheckOutCalendar ? 'active' : 'unActive'}
                 />
