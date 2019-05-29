@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import './BookRoom.sass'
 import Calendar from 'react-calendar';
 import Database from './../database/Database';
-
-
+import DatabaseRoomInfo from '../confirmBooking/DatabaseRoomInfo'
+import ConfirmBooking from '../confirmBooking/ConfirmBooking';
 class BookRoom extends Component {
 
     state = {
         date: new Date(),
-        roomType: ['Queen Room','KingRoom', 'Supreme Room' ],
+        roomType: ['Queen Room','King Room', 'Supreme Room' ],
         numberOfGuest: [1, 2, 3, 4],
         calendarFrom: false,
         calendarTo: false,
@@ -21,7 +21,8 @@ class BookRoom extends Component {
         //henriks kod för att blurra calendar on clicked
         toggleCheckInCalendar: true,
         toggleCheckOutCalendar: true,
-      }
+
+      };
 
     // let newDate;
 
@@ -72,11 +73,6 @@ class BookRoom extends Component {
           date: date, fromDate: date.toISOString().substring(0, 10),
           toggleCheckInCalendar: false,
          })
-
-
-
-
-
     }
 
 
@@ -92,6 +88,7 @@ class BookRoom extends Component {
         this.setState({
             showRooms: !this.state.showRooms
         })
+
     }
 
     handleSelectedRoom = (e) => {
@@ -101,10 +98,34 @@ class BookRoom extends Component {
         this.setState({numberOfGuestSelected: e.target.value})
     }
 
+    // { fromDate: '2019-05-03', toDate: '2019-05-10'},
+    // { fromDate: '2019-05-10', toDate: '2019-05-17'},
+    // { fromDate: '2019-05-20', toDate: '2019-05-22'},
+    // handleRoomObject = () => {
+    //   let  bookings = this.state.bookings;
+    //   let falseFromDate = this.state.fromDate;
+    //   let falseToDate = this.state.toDate;
+    //   let counter = 0;
+    //   for (let i = 0; i < bookings.length; i++) {
+    //     if((falseToDate <= bookings[i].fromDate && falseFromDate < bookings[i].toDate) || (falseToDate > bookings[i].fromDate && falseFromDate > bookings[i].toDate) ) {
+    //       counter ++;
+    //     }
+    //   }
+    //   if(counter === 3){
+    //     console.log('Render the room')
+    //   } else {
+    //
+    //     console.log('dont render this shit')
+    //   }
+    //
+    // }
+
+
+
+
 
 
     render() {
-
         let roomType = this.state.roomType.map((room, index) => {return <option key={index} value={room}> {room} </option> })
         let numberOfGuests = this.state.numberOfGuest.map((numberOfGuest, index) => {return <option key={index} value={numberOfGuest}> {numberOfGuest} </option> })
         let calendarCheckInDate = null;
@@ -115,8 +136,10 @@ class BookRoom extends Component {
                 value={this.state.date}
                 onClickDay={this.displayCheckIn}
                 className={this.state.toggleCheckInCalendar ? 'active' : 'unActive'}
+
                 />
         }
+
         if( this.state.calendarTo ) {
             calendarCheckOutDate = <Calendar
                 onChange={this.setDateTo}
@@ -129,12 +152,25 @@ class BookRoom extends Component {
         let showRooms = this.state.showRooms;
         let listOfRooms;
         if (showRooms) {
-            listOfRooms = <Database selectedRoomType={this.state.selectedRoomType} />
-        }
 
+            listOfRooms =
+
+            <Database
+              selectedRoomType={this.state.selectedRoomType}
+              renderRooms={this.handleRoomObject}
+              fromDate={this.state.fromDate}
+              toDate={this.state.toDate} />
+
+
+        }
+let fml = this.state.toDate
         return(
+
+
             <div className="bookContainer">
+
                 <h1>Choose Room</h1>
+                <button onClick={this.handleRoomObject}>Click me to show me the Room object.</button>
 
                 <div className="container">
                     <span onClick={this.bookFromDate} className="toDate"> Date from
@@ -161,6 +197,8 @@ class BookRoom extends Component {
 
                 <button onClick={this.showRoomsHandler}>Show Rooms</button>
                 {listOfRooms}
+                  <DatabaseRoomInfo  toDate={fml}/>
+
             </div>
         )
     }
