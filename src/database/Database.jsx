@@ -9,7 +9,7 @@ import './Database.css'
 const Database = (props) => {
   let loggo;
   let roomInfo;
-
+  let roomStats;
     const [roomData, setRoomData] = useState(null);
 
     useEffect(() => {
@@ -72,6 +72,7 @@ const Database = (props) => {
             let falseFromDate = props.fromDate;
             let falseToDate = props.toDate;
             let counter = 0;
+            let i;
             if (rooms.bookings) {
               for (let i = 0; i < bookings.length; i++) {
 
