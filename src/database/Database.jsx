@@ -8,6 +8,7 @@ const Database = (props) => {
   let loggo;
   let roomInfo;
   let roomStats;
+  let test;
     const [roomData, setRoomData] = useState(null);
 
     useEffect(() => {
@@ -43,8 +44,8 @@ const Database = (props) => {
             </ul>
           }
           if(rooms.roomType === 'King Room') {
-            loggo = require('../shared/roomIMG/hotel-room-1447201_1920.jpg');
-            roomInfo = <p>This is the smack in the middle of our Supreme Room and our Queen Room, this room is truly fit for a king </p>
+              loggo = require('../shared/roomIMG/hotel-room-1447201_1920.jpg');
+              roomInfo = <p>This is the smack in the middle of our Supreme Room and our Queen Room, this room is truly fit for a king </p>
               roomStats =
               <ul>
                 <li>Balcony: {rooms.Balcony}</li>
@@ -53,6 +54,7 @@ const Database = (props) => {
                 <li>Free RoomService: {rooms.FreeRoomService}</li>
               </ul>
           }
+
           if (rooms.roomType === 'Supreme Room') {
             loggo = require('../shared/roomIMG/apartment-1822409_1920.jpg');
             roomInfo = <p>The king of kings, the supreme room. This room is a true beauty and screams premium and luxury design</p>
@@ -65,11 +67,28 @@ const Database = (props) => {
               </ul>
           }
           if (props.selectedRoomType === rooms.roomType) {
+            let  bookings = rooms.bookings;
+            let falseFromDate = props.fromDate;
+            let falseToDate = props.toDate;
+            let counter = 0;
+            if (rooms.bookings) {
+              for (let i = 0; i < bookings.length; i++) {
 
-            return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}<button>Click</button></div></li>
-          } else {
+                if((falseToDate <= bookings[i].fromDate && falseFromDate < bookings[i].toDate) || (falseToDate > bookings[i].fromDate && falseFromDate > bookings[i].toDate) ) {
+                  counter ++;
+                }
+              }
+              if(counter === i){
+                return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}<button>Click</button></div></li>
+              } else {
+                return;
+              }
+            }
+            else {
+                return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}<button>Click</button></div></li>
+            }
 
-          }
+            }
         })
     }
 

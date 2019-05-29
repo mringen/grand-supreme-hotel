@@ -21,7 +21,8 @@ class BookRoom extends Component {
         //henriks kod för att blurra calendar on clicked
         toggleCheckInCalendar: true,
         toggleCheckOutCalendar: true,
-      }
+  
+      };
 
     // let newDate;
 
@@ -94,7 +95,32 @@ class BookRoom extends Component {
     handleNumberOfGuest = (e) => {
         this.setState({numberOfGuestSelected: e.target.value})
     }
-    //testing stuff out
+
+    // { fromDate: '2019-05-03', toDate: '2019-05-10'},
+    // { fromDate: '2019-05-10', toDate: '2019-05-17'},
+    // { fromDate: '2019-05-20', toDate: '2019-05-22'},
+    // handleRoomObject = () => {
+    //   let  bookings = this.state.bookings;
+    //   let falseFromDate = this.state.fromDate;
+    //   let falseToDate = this.state.toDate;
+    //   let counter = 0;
+    //   for (let i = 0; i < bookings.length; i++) {
+    //     if((falseToDate <= bookings[i].fromDate && falseFromDate < bookings[i].toDate) || (falseToDate > bookings[i].fromDate && falseFromDate > bookings[i].toDate) ) {
+    //       counter ++;
+    //     }
+    //   }
+    //   if(counter === 3){
+    //     console.log('Render the room')
+    //   } else {
+    //
+    //     console.log('dont render this shit')
+    //   }
+    //
+    // }
+
+
+
+
 
 
     render() {
@@ -123,12 +149,18 @@ class BookRoom extends Component {
         let showRooms = this.state.showRooms;
         let listOfRooms;
         if (showRooms) {
-            listOfRooms = <Database selectedRoomType={this.state.selectedRoomType} />
+            listOfRooms =
+            <Database
+              selectedRoomType={this.state.selectedRoomType}
+              renderRooms={this.handleRoomObject}
+              fromDate={this.state.fromDate}
+              toDate={this.state.toDate} />
         }
 
         return(
             <div className="bookContainer">
                 <h1>Choose Room</h1>
+                <button onClick={this.handleRoomObject}>Click me to show me the Room object.</button>
 
                 <div className="container">
                     <span onClick={this.bookFromDate} className="toDate"> Date from
