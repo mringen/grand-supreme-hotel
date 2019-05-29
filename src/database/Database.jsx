@@ -56,7 +56,7 @@ const Database = (props) => {
             <div>
               <h3>{rooms.roomType}</h3>
               {roomInfo}
-              <button><Link to="/ConfirmBooking/">Book Now</Link></button>
+              <button className="btnToConfirm"><Link to="/ConfirmBooking/">Book Now</Link></button>
             </div></li>
           } else {
 
@@ -74,7 +74,7 @@ const Database = (props) => {
                   {listRoom}
 
                 </ul>
-<button>{props.confirmBookingLink}</button>
+
             </div>
         )
 }

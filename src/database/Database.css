@@ -6,7 +6,7 @@
 }
 
 .Room {
-  
+
   display: flex;
   margin-bottom: 10px;
   background-color: white;
@@ -20,4 +20,8 @@
   img {
     width: 100%
   }
+}
+
+.btnToConfirm > a{
+  color: black;
 }
