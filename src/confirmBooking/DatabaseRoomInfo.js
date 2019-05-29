@@ -16,8 +16,8 @@ class DatabaseRoomInfo extends Component{
        this.setState({confrimDayTo: this.props.toDate},
          () => console.log(this.state.hasBeenClicked))
      }
-    console.log('nigga am here', this.state.confrimDayTo);
-    console.log(this.props);
+    // console.log('nigga am here', this.state.confrimDayTo);
+    // console.log(this.props);
     return (
       <div>
       <h1> här e jag {this.props.toDate} </h1>
