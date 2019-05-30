@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import './confirmBooking.sass'
 import InputHolder from './InputHolder';
-
+import DatabaseRoomInfo from './DatabaseRoomInfo';
 class ConfirmBooking extends Component {
+
     state = {
-      firstName:'',
-      lasteName:''
+      confrimDayFrom:this.props.booktFrom,
+      confrimDayTo:''
     }
 
-    setInputValue = newValue => {
-    		this.setState({ firstName: newValue });
-    	}
 
     render() {
 
+      let propFromBookRoom = this.props.toDate
+      console.log(propFromBookRoom);
 
 
         return(
@@ -21,9 +21,10 @@ class ConfirmBooking extends Component {
             <div className="confirimPage">
               <h1> Verification the reservation </h1>
               <br/>
-
+            want to book to {this.props.toDate}
+              <br/>
+              <p> Book from {this.state.confrimDayFrom} </p>
                   <InputHolder />
-
 
             </div>
         )
