@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './confirmBooking.sass'
-import Database from '../database/Database';
+// import Database from '../database/Database';
 // import DatabaseRoomInfo from './DatabaseRoomInfo';
 const defaultState = {
   firstName:'',

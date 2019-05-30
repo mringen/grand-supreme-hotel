@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-// import Database from '../database/Database';
 import './confirmBooking.sass'
-// import BookRoom from '../bookRoom/BookRoom';
-// import DatabaseRoomInfo from './../database/DatabaseRoomInfo';
 import InputHolder from './InputHolder';
 
 class ConfirmBooking extends Component {

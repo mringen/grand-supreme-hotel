@@ -3,11 +3,13 @@ import './BookRoom.sass'
 import Calendar from 'react-calendar';
 import Database from './../database/Database';
 // import DatabaseRoomInfo from '../database/DatabaseRoomInfo'
-import ConfirmBooking from '../confirmBooking/ConfirmBooking';
+// import ConfirmBooking from '../confirmBooking/ConfirmBooking';
 class BookRoom extends Component {
 
     state = {
         date: new Date(),
+        checkinDate: new Date(),
+        checkoutDate: new Date(),
         roomType: ['Queen Room','King Room', 'Supreme Room' ],
         numberOfGuest: [1, 2, 3, 4],
         calendarFrom: false,
@@ -61,26 +63,21 @@ class BookRoom extends Component {
       }
     }
 
-    // setDateFrom = () => {
-    //     // this.setState({fromDate: this.state.date})
-    // }
-
-    // setDateTo = () => {}
-
     setDateFrom = date => {
         date.setHours(date.getHours()+12);  // kompensera för tidszoner
         this.setState({
-          date: date, fromDate: date.toISOString().substring(0, 10),
+          checkinDate: date, fromDate: date.toISOString().substring(0, 10),
           toggleCheckInCalendar: false,
          })
+         date.setHours(date.getHours()+13);
     }
 
 
-    setDateTo = date => {
+    setDateTo = checkinDate => {
       console.log('selected date')
-        date.setHours(date.getHours()+12);  // kompensera för tidszoner
+        checkinDate.setHours(checkinDate.getHours()+12);  // kompensera för tidszoner
         this.setState({
-          date: date, toDate: date.toISOString().substring(0, 10),
+          checkoutDate: checkinDate, toDate: checkinDate.toISOString().substring(0, 10),
           toggleCheckOutCalendar: false,
          })
     }
@@ -101,7 +98,6 @@ class BookRoom extends Component {
     }
 
 
-
     render() {
         let roomType = this.state.roomType.map((room, index) => {return <option key={index} value={room}> {room} </option> })
         let numberOfGuests = this.state.numberOfGuest.map((numberOfGuest, index) => {return <option key={index} value={numberOfGuest}> {numberOfGuest} </option> })
@@ -111,6 +107,7 @@ class BookRoom extends Component {
             calendarCheckInDate = <Calendar
                 onChange={this.setDateFrom}
                 value={this.state.date}
+                minDate={this.state.date}
                 onClickDay={this.displayCheckIn}
                 className={this.state.toggleCheckInCalendar ? 'active' : 'unActive'}
 
@@ -121,6 +118,7 @@ class BookRoom extends Component {
             calendarCheckOutDate = <Calendar
                 onChange={this.setDateTo}
                 value={this.state.date}
+                minDate={this.state.checkinDate}
                 onClickDay={this.displayCheckOut}
                 className={this.state.toggleCheckOutCalendar ? 'active' : 'unActive'}
                 />
@@ -172,7 +170,7 @@ class BookRoom extends Component {
 
                 <button onClick={this.showRoomsHandler}>Show Rooms</button>
                 {listOfRooms}
-              
+
             </div>
         )
     }

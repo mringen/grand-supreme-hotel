@@ -1,17 +1,22 @@
 import React, {Component} from 'react';
+import {Link } from "react-router-dom";
 import './landingPage.css'
-import Hero from '../shared/img/hotel hero.img.1.jpg'
 
 class LandingPage extends Component {
+
+    testar = () => {
+        console.log('händer här');
+    }
 
     render() {
         return(
           <div>
+
             <div className="hero-container">
               <div className="hero-image">
                 <div className="hero-text">
                   <h1>Relax at our Luxury hotel and resort in the middle of the carrabian</h1>
-                  <button>Find Room</button>
+                  <Link to="/BookRoom/"><button>Find Room</button></Link>
                 </div>
               </div>
             </div>

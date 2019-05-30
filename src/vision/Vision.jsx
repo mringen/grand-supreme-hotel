@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import './Vision.sass';
-// import Hotel_Team from '../shared/picForVision/hotel_team.jpg';
-
 
 class Vision extends Component {
 
@@ -9,7 +7,7 @@ class Vision extends Component {
         return(
           <div className="visionPage">
             <div className="titleWrapper">
-              <img className="teamImg" src="https://www.travelmarket.se/gfx/top/hotel_01.jpg"/>
+              <img className="teamImg" alt="not working" src="https://www.travelmarket.se/gfx/top/hotel_01.jpg"/>
 
             </div>
             <div className="visonAndGoalWrapper">
