@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import Database from '../database/Database';
+// import Database from '../database/Database';
 import './confirmBooking.sass'
-import BookRoom from '../bookRoom/BookRoom';
-import DatabaseRoomInfo from './DatabaseRoomInfo';
+// import BookRoom from '../bookRoom/BookRoom';
+// import DatabaseRoomInfo from './../database/DatabaseRoomInfo';
 import InputHolder from './InputHolder';
 
 class ConfirmBooking extends Component {
@@ -23,21 +23,10 @@ class ConfirmBooking extends Component {
 
             <div className="confirimPage">
               <h1> Verification the reservation </h1>
-                <div className="inputWrapper">
+              <br/>
 
-                      <InputHolder liftValue={this.setInputValue}  value={this.state.firstName}/>
-                        <br/>
-                        <input typ="text" placeholder="Last name"/>
-                        <br/>
-                        <input typ="text" placeholder="Phone number"/>
-                        <br/>
-                        <input typ="text" placeholder="Email"/>
-                  </div>
+                  <InputHolder />
 
-                    <DatabaseRoomInfo/>
-
-
-                        <button> Confirm </button>
 
             </div>
         )

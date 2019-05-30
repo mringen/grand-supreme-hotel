@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Vision.sass';
-import Hotel_Team from '../shared/picForVision/hotel_team.jpg';
+// import Hotel_Team from '../shared/picForVision/hotel_team.jpg';
 
 
 class Vision extends Component {

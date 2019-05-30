@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-// import ConfirmBooking from '../confirmBooking/ConfirmBooking'
 import DatabaseRoomInfo from './../confirmBooking/DatabaseRoomInfo';
 import './Database.css'
 
@@ -93,6 +92,7 @@ const Database = (props) => {
 
     }
 
+
         return(
             <div>
 
@@ -100,7 +100,7 @@ const Database = (props) => {
                   className="Rooms">
                   {listRoom}
                 </ul>
-                
+
             </div>
         )
 }

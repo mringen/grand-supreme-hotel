@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './BookRoom.sass'
 import Calendar from 'react-calendar';
 import Database from './../database/Database';
-import DatabaseRoomInfo from '../confirmBooking/DatabaseRoomInfo'
+// import DatabaseRoomInfo from '../database/DatabaseRoomInfo'
 import ConfirmBooking from '../confirmBooking/ConfirmBooking';
 class BookRoom extends Component {
 
@@ -89,6 +89,8 @@ class BookRoom extends Component {
             showRooms: !this.state.showRooms
         })
 
+
+
     }
 
     handleSelectedRoom = (e) => {
@@ -97,31 +99,6 @@ class BookRoom extends Component {
     handleNumberOfGuest = (e) => {
         this.setState({numberOfGuestSelected: e.target.value})
     }
-
-    // { fromDate: '2019-05-03', toDate: '2019-05-10'},
-    // { fromDate: '2019-05-10', toDate: '2019-05-17'},
-    // { fromDate: '2019-05-20', toDate: '2019-05-22'},
-    // handleRoomObject = () => {
-    //   let  bookings = this.state.bookings;
-    //   let falseFromDate = this.state.fromDate;
-    //   let falseToDate = this.state.toDate;
-    //   let counter = 0;
-    //   for (let i = 0; i < bookings.length; i++) {
-    //     if((falseToDate <= bookings[i].fromDate && falseFromDate < bookings[i].toDate) || (falseToDate > bookings[i].fromDate && falseFromDate > bookings[i].toDate) ) {
-    //       counter ++;
-    //     }
-    //   }
-    //   if(counter === 3){
-    //     console.log('Render the room')
-    //   } else {
-    //
-    //     console.log('dont render this shit')
-    //   }
-    //
-    // }
-
-
-
 
 
 
@@ -152,18 +129,16 @@ class BookRoom extends Component {
         let showRooms = this.state.showRooms;
         let listOfRooms;
         if (showRooms) {
-
             listOfRooms =
-
             <Database
               selectedRoomType={this.state.selectedRoomType}
               renderRooms={this.handleRoomObject}
               fromDate={this.state.fromDate}
-              toDate={this.state.toDate} />
-
-
+              toDate={this.state.toDate} />;
         }
-let fml = this.state.toDate
+
+
+
         return(
 
 
@@ -197,8 +172,7 @@ let fml = this.state.toDate
 
                 <button onClick={this.showRoomsHandler}>Show Rooms</button>
                 {listOfRooms}
-                  <DatabaseRoomInfo  toDate={fml}/>
-
+              
             </div>
         )
     }
