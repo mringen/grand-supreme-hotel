@@ -11,12 +11,11 @@ class LandingPage extends Component {
     render() {
         return(
           <div>
-
             <div className="hero-container">
               <div className="hero-image">
                 <div className="hero-text">
                   <h1>Relax at our Luxury hotel and resort in the middle of the carrabian</h1>
-                  <Link to="/BookRoom/"><button>Find Room</button></Link>
+                  <Link to="/BookRoom/"><button className="callToAction">Find Room</button></Link>
                 </div>
               </div>
             </div>
