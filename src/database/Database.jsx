@@ -31,9 +31,6 @@ const Database = (props) => {
 
 
 
-  let listWithId = [];
-  let theButtonIndex;
-
 
     let listRoom = null;
     if(roomData) {
@@ -85,7 +82,7 @@ const Database = (props) => {
               }
               if(counter === i){
 
-                listWithId.push(rooms.id)
+
 
                 return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
                   <Link
@@ -95,6 +92,7 @@ const Database = (props) => {
         checkInDate: props.fromDate,
         checkOutDate: props.toDate,
         roomId: rooms.id,
+        roomType: rooms.roomType,
 
       }
     }}
@@ -109,7 +107,7 @@ const Database = (props) => {
               }
             }
             else {
-                        listWithId.push(rooms.id)
+
                 return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
                   <Link
             to={{
@@ -118,6 +116,7 @@ const Database = (props) => {
                 checkInDate: props.fromDate,
                 checkOutDate: props.toDate,
                 roomId: rooms.id,
+                  roomType: rooms.roomType,
               }
             }}
 
@@ -134,7 +133,7 @@ const Database = (props) => {
 
 
 };
-console.log(listWithId);
+
 
 
         return(

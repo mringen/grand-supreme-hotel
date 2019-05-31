@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import './confirmBooking.sass'
-// import Database from '../database/Database';
-// import DatabaseRoomInfo from './DatabaseRoomInfo';
+
+
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
 const defaultState = {
   firstName:'',
   lastName:'',
@@ -9,12 +12,11 @@ const defaultState = {
   firstNameError:'',
   lastNameError:'',
   emailError:'',
-
 }
+
+
 class InputHolder extends Component{
   state = defaultState;
-
-
 
 
   validation = () =>{
@@ -31,7 +33,7 @@ class InputHolder extends Component{
       lastNameError = "Pleace enter you lastname";
     }
 
-    if(typeof  this.state.email != 'number' ||  this.state.email === "" || !this.state.email.includes('@') ){
+    if(typeof  this.state.email != 'string' ||  this.state.email === "" || !this.state.email.includes('@') ){
       emailError = "Invalid email address";
     }
 
@@ -54,12 +56,24 @@ class InputHolder extends Component{
 
   }
 
-  handelConfirm = () =>{
+  updateUserInfoToDataBast = () =>{
+    firebase.firestore().collection('HotelRooms').doc(this.props.roomsId).update({
+      userInfo: firebase.firestore.FieldValue.arrayUnion({firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, checkInDay: this.props.bookFrom, checkoutDay: this.props.bookTo})
 
+    });
+    console.log('fml');
+  }
+
+
+
+
+  handelConfirm = () =>{
     const isValid = this.validation();
     if(isValid) {
+      this.updateUserInfoToDataBast();
+      this.props.pushToDataBase();
       console.log(this.state);
-      this.setState(defaultState);
+      this.setState({defaultState});
     }
   };
 
@@ -74,7 +88,7 @@ class InputHolder extends Component{
     return(
 
 
-      <div>
+      <div className="inputHolderPage">
       <input  typ="text"
       value={this.state.firstName} 	onChange={e => this.setState({firstName: e.target.value})} placeholder="Please endter first name"/>
       <p className="errorMsg">{this.state.firstNameError}</p>
@@ -90,7 +104,10 @@ class InputHolder extends Component{
       <p className="errorMsg">{this.state.emailError}</p>
       <br/>
 
-
+      <h1> You booking </h1>
+        <p> Checkin date: <strong> {this.props.bookFrom}</strong></p>
+        <p> Checkout date: <strong> {this.props.bookTo} </strong></p>
+        <p> The selected room tier: <strong> {this.props.roomType} </strong></p>
 
       <button onClick={this.handelConfirm}> Confirm </button>
       </div>

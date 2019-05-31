@@ -3,7 +3,7 @@ import './BookRoom.sass'
 import Calendar from 'react-calendar';
 import Database from './../database/Database';
 // import DatabaseRoomInfo from '../confirmBooking/DatabaseRoomInfo'
-import ConfirmBooking from '../confirmBooking/ConfirmBooking';
+// import ConfirmBooking from '../confirmBooking/ConfirmBooking';
 class BookRoom extends Component {
 
     state = {
@@ -24,14 +24,7 @@ class BookRoom extends Component {
         toggleCheckInCalendar: true,
         toggleCheckOutCalendar: true,
 
-        //Kamphol spagetti kod
-
-        ConfirmBookingVisebel:false,
-        selectTheDays:true,
-        toggleHidden:false,
-
       };
-
 
     // let newDate;
 
@@ -90,26 +83,10 @@ class BookRoom extends Component {
     }
     showRoomsHandler = () => {
         this.setState({
-            showRooms: !this.state.showRooms,
-
+            showRooms: !this.state.showRooms
         })
 
     }
-
-    closeRoomsHandler = () => {
-        this.setState({
-             ConfirmBookingVisebel:!this.state.ConfirmBookingVisebel,
-                 showRooms: false
-        })
-
-        if(this.state.toggleHidden === false){
-          this.setState({toggleHidden: true})
-        }else {
-          this.setState({toggleHidden: false})
-        }
-    }
-
-
 
     handleSelectedRoom = (e) => {
         this.setState({selectedRoomType: e.target.value})
@@ -119,9 +96,7 @@ class BookRoom extends Component {
     }
 
 
-
     render() {
-
         let roomType = this.state.roomType.map((room, index) => {return <option key={index} value={room}> {room} </option> })
         let numberOfGuests = this.state.numberOfGuest.map((numberOfGuest, index) => {return <option key={index} value={numberOfGuest}> {numberOfGuest} </option> })
         let calendarCheckInDate = null;
@@ -150,55 +125,48 @@ class BookRoom extends Component {
         let showRooms = this.state.showRooms;
         let listOfRooms;
         if (showRooms) {
+
             listOfRooms =
+
             <Database
               selectedRoomType={this.state.selectedRoomType}
               renderRooms={this.handleRoomObject}
               fromDate={this.state.fromDate}
-              toDate={this.state.toDate}
-              closeTheRooms={ this.closeRoomsHandler.bind(this)} />;
-        }
+              toDate={this.state.toDate} />
 
-        let ConfirmBookingVisebel = this.state.ConfirmBookingVisebel;
-        let confrimpage;
-        if(ConfirmBookingVisebel)
-            {
-              confrimpage = <ConfirmBooking toDate={this.state.toDate} booktFrom={this.state.fromDate} />
-            }
+
+        }
 
         return(
 
 
             <div className="bookContainer">
 
-          <div className="bookWrapper" hidden={this.state.toggleHidden}>
-                  <h1>Choose Room</h1>
-                  <button onClick={this.handleRoomObject}>Click me to show me the Room object.</button>
+                <h1>Choose Room</h1>
+                <button onClick={this.handleRoomObject}>Click me to show me the Room object.</button>
 
-                  <div className="container">
-                      <span onClick={this.bookFromDate} className="toDate"> Date from
-                          <input className="dateValue" onClick={this.toggleFromCalandar} onChange={this.setDateFrom} value={this.state.fromDate} />
-                      </span>
-                      <span className="calendar">{calendarCheckInDate}</span>
-                  </div>
+                <div className="container">
+                    <span onClick={this.bookFromDate} className="toDate"> Date from
+                        <input className="dateValue" onClick={this.toggleFromCalandar} onChange={this.setDateFrom} value={this.state.fromDate} />
+                    </span>
+                    <span className="calendar">{calendarCheckInDate}</span>
+                </div>
 
 
-                  <div className="container">
-                      <span onClick={this.bookToDate} className="toDate"> Date to
-                          <input className="dateValue"  onClick={this.toggleToCalandar} onChange={this.setDateTo} value={this.state.toDate} />
-                      </span>
-                      <span className="calendar">{calendarCheckOutDate}</span>
-                  </div>
+                <div className="container">
+                    <span onClick={this.bookToDate} className="toDate"> Date to
+                        <input className="dateValue"  onClick={this.toggleToCalandar} onChange={this.setDateTo} value={this.state.toDate} />
+                    </span>
+                    <span className="calendar">{calendarCheckOutDate}</span>
+                </div>
 
-                  <div className="containerRoomPerson">Room
-                      <select onChange={this.handleSelectedRoom}> {roomType} </select>
-                  </div>
+                <div className="containerRoomPerson">Room
+                    <select onChange={this.handleSelectedRoom}> {roomType} </select>
+                </div>
 
-                  <div className="containerRoomPerson"> Person
-                      <select onChange={this.handleNumberOfGuest}> {numberOfGuests} </select>
-                  </div>
-
-                                  </div>
+                <div className="containerRoomPerson"> Person
+                    <select onChange={this.handleNumberOfGuest}> {numberOfGuests} </select>
+                </div>
 
                 <button onClick={this.showRoomsHandler}>Show Rooms</button>
                 {listOfRooms}
