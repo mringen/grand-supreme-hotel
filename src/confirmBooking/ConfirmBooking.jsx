@@ -11,20 +11,26 @@ class ConfirmBooking extends Component {
     // allRooms: ''
   }
 
+renderDate = () => {
+  this.setState({
+    checkInDate: this.props.location.aboutProps.checkInDate,
+    checkOutDate: this.props.location.aboutProps.checkOutDate,
+    roomId: this.props.location.aboutProps.roomId,
+    // allRooms: this.props.location.aboutProps.allRooms
+  })
+}
 
 updateData = () => {
 		firebase.firestore().collection('HotelRooms').doc(this.state.roomId).update({
     bookings: firebase.firestore.FieldValue.arrayUnion({fromDate: this.props.location.aboutProps.checkInDate, toDate: this.props.location.aboutProps.checkOutDate})
 });
 
-}
-    // ("bookings", ({fromDate: "2019-06-17", toDate: "2019-06-26"}));
 
+
+
+	}
 
     render() {
-
-
-
         return(
           <div>
             <button onClick={this.renderDate}>Click me first</button>
@@ -34,6 +40,5 @@ updateData = () => {
           </div>
         )
     }
-
 }
 export default ConfirmBooking
