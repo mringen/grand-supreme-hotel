@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import {Link } from "react-router-dom";
-import ConfirmBooking from '../confirmBooking/ConfirmBooking'
-// import DatabaseRoomInfo from '../confirmBooking/DatabaseRoomInfo'
+import {  Link } from "react-router-dom";
+
 import './Database.css'
 
 
@@ -79,7 +78,7 @@ const Database = (props) => {
 
             if (rooms.bookings) {
               for (i = 0; i < bookings.length; i++) {
-
+                console.log(bookings[i])
                 if((falseToDate <= bookings[i].fromDate && falseFromDate < bookings[i].toDate) || (falseToDate > bookings[i].fromDate && falseFromDate > bookings[i].toDate) ) {
                   counter ++;
                 }
@@ -89,7 +88,20 @@ const Database = (props) => {
                 listWithId.push(rooms.id)
 
                 return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
-                    <button onClick={props.closeTheRooms.bind(this)} >Book Now</button>
+                  <Link
+    to={{
+      pathname: '/ConfirmBooking/',
+      aboutProps:{
+        checkInDate: props.fromDate,
+        checkOutDate: props.toDate,
+        roomId: rooms.id,
+
+      }
+    }}
+
+    >
+      <button >Book Now</button>
+</Link>
 
               </div></li>
               } else {
@@ -99,7 +111,19 @@ const Database = (props) => {
             else {
                         listWithId.push(rooms.id)
                 return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
-                <button onClick={props.closeTheRooms.bind(this)}>Book Now</button>
+                  <Link
+            to={{
+              pathname: '/ConfirmBooking/',
+              aboutProps:{
+                checkInDate: props.fromDate,
+                checkOutDate: props.toDate,
+                roomId: rooms.id,
+              }
+            }}
+
+            >
+              <button >Book Now</button>
+  </Link>
                 </div></li>
             }
         }

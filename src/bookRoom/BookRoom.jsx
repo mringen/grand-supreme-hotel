@@ -198,11 +198,11 @@ class BookRoom extends Component {
                       <select onChange={this.handleNumberOfGuest}> {numberOfGuests} </select>
                   </div>
 
-                    <button onClick={this.toggleTheviebilety} onClick={this.showRoomsHandler}>Show Rooms</button>
                                   </div>
 
-                  {listOfRooms}
-                  {confrimpage}
+                <button onClick={this.showRoomsHandler}>Show Rooms</button>
+                {listOfRooms}
+
 
             </div>
         )
