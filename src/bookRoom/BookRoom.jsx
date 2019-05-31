@@ -170,7 +170,7 @@ let fml = this.state.toDate
 
                 <button onClick={this.showRoomsHandler}>Show Rooms</button>
                 {listOfRooms}
-                  <DatabaseRoomInfo  toDate={fml}/>
+              
 
             </div>
         )
