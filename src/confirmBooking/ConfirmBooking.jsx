@@ -1,11 +1,53 @@
 import React, {Component} from 'react';
-import Database from '../database/Database';
-import './confirmBooking.sass'
-import BookRoom from '../bookRoom/BookRoom';
-import DatabaseRoomInfo from './DatabaseRoomInfo';
-
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+// import Database from '../database/Database';
 
 class ConfirmBooking extends Component {
+  state = {
+    checkInDate: '',
+    checkOutDate: '',
+    roomId: '',
+    // allRooms: ''
+  }
+
+renderDate = () => {
+  this.setState({
+    checkInDate: this.props.location.aboutProps.checkInDate,
+    checkOutDate: this.props.location.aboutProps.checkOutDate,
+    roomId: this.props.location.aboutProps.roomId,
+    // allRooms: this.props.location.aboutProps.allRooms
+  })
+}
+
+updateData = () => {
+		firebase.firestore().collection('HotelRooms').doc(this.state.roomId).update({
+    bookings: firebase.firestore.FieldValue.arrayUnion({fromDate: this.props.location.aboutProps.checkInDate, toDate: this.props.location.aboutProps.checkOutDate})
+});
+
+
+    // ("bookings", ({fromDate: "2019-06-17", toDate: "2019-06-26"}));
+
+
+	}
+
+  // let obj = {
+  //         roomType: 'King Room',
+  //         roomNumber: counter,
+  //         fromDate: '',
+  //         toDate: '',
+  //         availableRoom: true,
+  //         Balcony: 'No',
+  //         Oceanview: 'No',
+  //         FreeMinibar: 'Yes',
+  //         FreeRoomService: 'Yes',
+  //         bookings: [
+  //           { fromDate: '2019-05-03', toDate: '2019-05-10'},
+  //           { fromDate: '2019-05-10', toDate: '2019-05-17'},
+  //           { fromDate: '2019-05-20', toDate: '2019-05-22'},
+  //         ]
+  //      };
+
 
 
     render() {
@@ -13,22 +55,12 @@ class ConfirmBooking extends Component {
 
 
         return(
-
-            <div>
-
-                <div className="inputWrapper">
-                        <input value="" typ="text" placeholder="First name"/>
-                        <input typ="text" placeholder="Last name"/>
-                        <input typ="text" placeholder="Phone number"/>
-                        <input typ="text" placeholder="Email"/>
-                  </div>
-
-                    <DatabaseRoomInfo/>
-
-
-                        <button> Confirm </button>
-
-            </div>
+          <div>
+            <button onClick={this.renderDate}>Click me first</button>
+            <button onClick={this.updateData}>Click me second</button>
+            <p>{this.state.checkInDate}-{this.state.checkOutDate} room id: {this.state.roomId} {this.state.allRooms}</p>
+            <div>ConfirmBooking page</div>
+          </div>
         )
     }
 }
