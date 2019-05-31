@@ -107,9 +107,6 @@ class BookRoom extends Component {
         }else {
           this.setState({toggleHidden: false})
         }
-
-      let test = <ConfirmBooking toDate={this.state.toDate} />
-
     }
 
 
@@ -166,7 +163,7 @@ class BookRoom extends Component {
         let confrimpage;
         if(ConfirmBookingVisebel)
             {
-              confrimpage = <ConfirmBooking toDate={this.state.toDate} />
+              confrimpage = <ConfirmBooking toDate={this.state.toDate} booktFrom={this.state.fromDate} />
             }
 
         return(

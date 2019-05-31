@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {Link } from "react-router-dom";
-// import ConfirmBooking from '../confirmBooking/ConfirmBooking'
+import ConfirmBooking from '../confirmBooking/ConfirmBooking'
 // import DatabaseRoomInfo from '../confirmBooking/DatabaseRoomInfo'
 import './Database.css'
+
 
 const Database = (props) => {
   let loggo;
@@ -30,8 +31,14 @@ const Database = (props) => {
     }, []);
 
 
+
+  let listWithId = [];
+  let theButtonIndex;
+
+
     let listRoom = null;
     if(roomData) {
+
         listRoom = roomData.map(rooms => {
 
 
@@ -78,8 +85,11 @@ const Database = (props) => {
                 }
               }
               if(counter === i){
+
+                listWithId.push(rooms.id)
+
                 return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
-                        <Link to="/ConfirmBooking/"><button >Book Now</button></Link>
+                    <button onClick={props.closeTheRooms.bind(this)} >Book Now</button>
 
               </div></li>
               } else {
@@ -87,15 +97,22 @@ const Database = (props) => {
               }
             }
             else {
-
+                        listWithId.push(rooms.id)
                 return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
                 <button onClick={props.closeTheRooms.bind(this)}>Book Now</button>
                 </div></li>
             }
         }
+
         return listRoom
     })
+
+
+
 };
+console.log(listWithId);
+
+
         return(
 
 
