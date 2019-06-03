@@ -49,11 +49,7 @@ updateData = () => {
   //      };
 
 
-
     render() {
-
-
-
         return(
           <div>
             <button onClick={this.renderDate}>Click me first</button>
