@@ -11,6 +11,7 @@ import RoomMaker from './roomMaker/RoomMaker';
 import ConfirmBooking from './confirmBooking/ConfirmBooking';
 
 function App() {
+
     return (
       <Router>
         <div className="App">
@@ -20,6 +21,7 @@ function App() {
                 bookingLink={<Link to="/BookRoom/">Book Room </Link>}
                 roomMakerLink={<Link to="/RoomMaker/"> Admin</Link>}
             />
+
 
             <Route path="/ConfirmBooking" component={ConfirmBooking}/>
             <Route path="/LandingPage/"  component={LandingPage} />

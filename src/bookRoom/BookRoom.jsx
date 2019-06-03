@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import './BookRoom.sass'
 import Calendar from 'react-calendar';
 import Database from './../database/Database';
-
-
+// import ConfirmBooking from '../confirmBooking/ConfirmBooking';
+// import DatabaseRoomInfo from '../database/DatabaseRoomInfo'
+// import ConfirmBooking from '../confirmBooking/ConfirmBooking';
 class BookRoom extends Component {
+
 
     state = {
         date: new Date(),
@@ -19,67 +21,41 @@ class BookRoom extends Component {
         selectedRoomType: 'Queen Room',
         numberOfGuestSelected: 1,
         showRooms: false,
-
-        //henriks kod för att blurra calendar on clicked
-        toggleCheckInCalendar: true,
-        toggleCheckOutCalendar: true,
-
-      };
-
-    // let newDate;
-
-    toggleFromCalandar = () => {
-      this.setState({
-        toggleCheckInCalendar: true,
-      })
-    }
-    toggleToCalandar = () => {
-      this.setState({
-        toggleCheckOutCalendar: true,
-      })
-    }
+    };
 
     bookFromDate = () => {
-      if(!this.state.toggleCheckInCalendar) {
-
-      } else {
-        this.setState({
-          calendarFrom: !this.state.calendarFrom,
-          toggleCheckInCalendar: true,
-        })
-
-      }
+        this.setState({calendarFrom: true})
     }
-
     bookToDate = () => {
-      if(!this.state.toggleCheckOutCalendar) {
-
-      } else {
-        this.setState({
-          calendarTo: !this.state.calendarTo,
-          toggleCheckOutCalendar: true,
-        })
-
-      }
+        this.setState({calendarTo: true})
     }
+
+    blurCalendar = () => {
+        setTimeout(() => {
+            this.setState({
+                calendarFrom: false,
+                calendarTo: false
+            })
+        }, 40);
+    }
+
 
     setDateFrom = date => {
         date.setHours(date.getHours()+12);  // kompensera för tidszoner
         this.setState({
-          checkinDate: date, fromDate: date.toISOString().substring(0, 10),
-          toggleCheckInCalendar: false,
-         })
-         date.setHours(date.getHours()+13);
+            checkinDate: date, fromDate: date.toISOString().substring(0, 10),
+            calendarFrom: false,
+        })
+        date.setHours(date.getHours()+13);
     }
 
 
     setDateTo = checkinDate => {
-      console.log('selected date')
         checkinDate.setHours(checkinDate.getHours()+12);  // kompensera för tidszoner
         this.setState({
-          checkoutDate: checkinDate, toDate: checkinDate.toISOString().substring(0, 10),
-          toggleCheckOutCalendar: false,
-         })
+            checkoutDate: checkinDate, toDate: checkinDate.toISOString().substring(0, 10),
+            calendarTo: false,
+        })
     }
     showRoomsHandler = () => {
         this.setState({
@@ -94,30 +70,26 @@ class BookRoom extends Component {
         this.setState({numberOfGuestSelected: e.target.value})
     }
 
-
     render() {
-
         let roomType = this.state.roomType.map((room, index) => {return <option key={index} value={room}> {room} </option> })
         let numberOfGuests = this.state.numberOfGuest.map((numberOfGuest, index) => {return <option key={index} value={numberOfGuest}> {numberOfGuest} </option> })
+
         let calendarCheckInDate = null;
         let calendarCheckOutDate = null;
         if( this.state.calendarFrom ) {
             calendarCheckInDate = <Calendar
-                onChange={this.setDateFrom}
-                value={this.state.date}
-                minDate={this.state.date}
-                onClickDay={this.displayCheckIn}
-                className={this.state.toggleCheckInCalendar ? 'active' : 'unActive'}
-                />
+            onChange={this.setDateFrom}
+            value={this.state.date}
+            minDate={this.state.date}
+            />
         }
+
         if( this.state.calendarTo ) {
             calendarCheckOutDate = <Calendar
-                onChange={this.setDateTo}
-                value={this.state.date}
-                minDate={this.state.checkinDate}
-                onClickDay={this.displayCheckOut}
-                className={this.state.toggleCheckOutCalendar ? 'active' : 'unActive'}
-                />
+            onChange={this.setDateTo}
+            value={this.state.date}
+            minDate={this.state.checkinDate}
+            />
         }
 
         let showRooms = this.state.showRooms;
@@ -125,44 +97,58 @@ class BookRoom extends Component {
         if (showRooms) {
             listOfRooms =
             <Database
-              selectedRoomType={this.state.selectedRoomType}
-              renderRooms={this.handleRoomObject}
-              fromDate={this.state.fromDate}
-              toDate={this.state.toDate} />
+            selectedRoomType={this.state.selectedRoomType}
+            renderRooms={this.handleRoomObject}
+            fromDate={this.state.fromDate}
+            toDate={this.state.toDate}
+            showMeState={this.showMeState} />;
         }
 
         return(
+
+
             <div className="bookContainer">
-                <h1>Choose Room</h1>
-                <button onClick={this.handleRoomObject}>Click me to show me the Room object.</button>
+            <div className="titleWrapper" >
+            <img className="teamImg" alt="not working" src="https://www.travelmarket.se/gfx/top/hotel_01.jpg"/>
+            </div>
 
-                <div className="container">
-                    <span onClick={this.bookFromDate} className="toDate"> Date from
-                        <input className="dateValue" onClick={this.toggleFromCalandar} onChange={this.setDateFrom} value={this.state.fromDate} />
-                    </span>
+            <div className="borderSearch">
+
+                    <div>
+                    <p> Date from </p>
+                <span onClick={this.bookFromDate} onBlur={this.blurCalendar}>
                     <span className="calendar">{calendarCheckInDate}</span>
+                        <input className="dateValue" onChange={this.setDateFrom}    value={this.state.fromDate}/>
+                </span>
                 </div>
+            <div>
+                <p> Date to </p>
+                <span onClick={this.bookToDate} onBlur={this.blurCalendar}>
+                <span className="calendar">{calendarCheckOutDate}</span>
+                <input className="dateValue" onChange={this.setDateTo} value={this.state.toDate} />
+                </span>
+            </div>
 
-
-                <div className="container">
-                    <span onClick={this.bookToDate} className="toDate"> Date to
-                        <input className="dateValue"  onClick={this.toggleToCalandar} onChange={this.setDateTo} value={this.state.toDate} />
-                    </span>
-                    <span className="calendar">{calendarCheckOutDate}</span>
-                </div>
-
-                <div className="containerRoomPerson">Room
+            <div className="bajs">
+                        <div >    <span className="room">Room</span>  <span className="person"> Person</span>  </div>
+                <div className="selectWrapper">
                     <select onChange={this.handleSelectedRoom}> {roomType} </select>
-                </div>
 
-                <div className="containerRoomPerson"> Person
+
                     <select onChange={this.handleNumberOfGuest}> {numberOfGuests} </select>
                 </div>
+            </div>
 
-                <button onClick={this.showRoomsHandler}>Show Rooms</button>
-                {listOfRooms}
+            </div>
+
+            <button className="searchRoomBtn" onClick={this.showRoomsHandler}>Search</button>
+
+
+
+            <div className="renderRoom"> {listOfRooms}</div>
+
             </div>
         )
     }
 }
- export default BookRoom
+export default BookRoom
