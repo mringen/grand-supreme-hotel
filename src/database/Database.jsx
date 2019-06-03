@@ -126,13 +126,10 @@ const Database = (props) => {
 
         return(
 
-
-            <div>
                 <ul
                   className="Rooms">
                   {listRoom}
                 </ul>
-            </div>
 
         )
 }
