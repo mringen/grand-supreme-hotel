@@ -11,16 +11,14 @@ class ConfirmBooking extends Component {
     roomsType:'',
   }
 
-// renderDate = () => {
-//   this.setState({
-//     checkInDate: this.props.location.aboutProps.checkInDate,
-//     checkOutDate: this.props.location.aboutProps.checkOutDate,
-//     roomId: this.props.location.aboutProps.roomId,
-//      roomsType: this.props.location.aboutProps.roomsType
-//   })
-// }
-
-
+renderDate = () => {
+  this.setState({
+    checkInDate: this.props.location.aboutProps.checkInDate,
+    checkOutDate: this.props.location.aboutProps.checkOutDate,
+    roomId: this.props.location.aboutProps.roomId,
+    // allRooms: this.props.location.aboutProps.allRooms
+  })
+}
 
 updateData = () => {
 		firebase.firestore().collection('HotelRooms').doc(this.state.roomId).update({

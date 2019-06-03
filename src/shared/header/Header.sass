@@ -1,12 +1,9 @@
 @import '../sharedStyle.sass'
+h4
+  text-align: center
 
 li
   list-style: none
-
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
 
 .not-active-burger
   display: none
@@ -29,12 +26,15 @@ li
   justify-content: space-around
   width: auto
   text-decoration: none
+a:hover
+  border-bottom: 2px solid white
+
 a
   color: white
   text-decoration: none
   letter-spacing: 3px
   font-weight: bold
-  font-size: 14px
+  font-size: 18px
 .navLinks li
   list-style: none
   padding-right: 10px
@@ -57,10 +57,12 @@ a
 .active-burger
   display: none
 
+
   //Burger CSS at mobile
 @media screen and (max-width: 1080px)
   .navLinks
-    width: 60%
+    width: 30%
+    font-size: 18px
 
 @media screen and (max-width: 768px)
   body
@@ -68,6 +70,8 @@ a
   h4
    text-align: center
    margin-left: 10px
+  .navMainContainer
+
   .navLinks li
     display: none
   .burger
@@ -75,6 +79,7 @@ a
     cursor: pointer
     margin-right: 10px
   .active-burger
+     border-top: 2px solid white
      position: absolute
      right: 0px
      height: 100vw
@@ -83,6 +88,7 @@ a
      display: flex
      flex-direction: column
      align-items: center
+     height: 100%
      width: 100%
      transform: translateX(0%)
      transition: transform 0.5s ease-in
@@ -94,3 +100,32 @@ a
       padding: 10px
       margin: 10px
       border-bottom: 2px solid white
+@media screen and (max-width: 500px)
+  h4
+   text-align: center
+   margin-left: 20px
+
+  .active-burger
+
+
+@media screen and (max-width: 400px)
+  h4
+   text-align: center
+   margin-left: 8px
+  .loggo
+    font-size: 15px
+
+    top: 10vh
+@media screen and (min-width: 350px)
+  h4
+   text-align: center
+   font-size: 15px
+   margin-left: 8px
+  .active-burger
+    top: 8vh
+@media screen and (max-height: 560px)
+  h4
+   text-align: center
+   margin-left: 8px
+  .active-burger
+    top: 12vh
