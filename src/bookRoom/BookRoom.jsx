@@ -36,7 +36,7 @@ class BookRoom extends Component {
                 calendarFrom: false,
                 calendarTo: false
             })
-        }, 40);
+        }, 70);
     }
 
 
