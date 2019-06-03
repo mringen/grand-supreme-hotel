@@ -29,15 +29,15 @@
   outline: 0;
   display: inline-block;
   padding: 7px 10px;
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: black;
   text-align: center;
   cursor: pointer;
 }
 
 .hero-text button:hover {
-  background-color: #555;
-  color: white;
+  background-color: white;
+  color: black;
 }
 /*Css for hero img ends*/
 
@@ -45,16 +45,13 @@
   margin: 10px;
   border: 1px solid black;
   display: flex;
-  flex-direction: row;
-  height: 50vw;
+  flex-direction: column;
+  height: 75vw;
 
 }
 .activitisMain div {
-  border: 1px solid black;
   margin: 10px;
-  justify-content: space-around;
-  height: auto;
-  width: 50vw;
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -63,6 +60,38 @@
 .activitis {
   background-image: url('../shared/img/adam-wilson-416248-unsplash.jpg');
 }
+.resturang {
+  background-image: url('../shared/img/surfer-2212948_640.jpg');
+  display: flex;
+}
+.test {
+  display: flex;
+  height: 34%
+}
+.facillitys {
+  background-image: url('../shared/img/kaos.jpg');
+  height: 60%
+}
+.resturang {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  color: white;
+  height: 100%;
+  width: 50%;
+}
+.testTesxt {
+  border: 1px solid black;
+  width: 40%;
+  height: 100%;
+  text-align: center;
+}
+.test1 {
+  height: 15%;
+  border: 1px solid black;
+  width: 80%;
+  align-self: center;
+}
 
 @media screen and (max-width: 768px) {
   h1 {
@@ -70,7 +99,7 @@
   }
 
   .hero-text button {
-    color: black;
+    color: white;
   }
   .activitisMain {
     flex-direction: column;
