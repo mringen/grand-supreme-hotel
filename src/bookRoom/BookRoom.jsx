@@ -129,7 +129,7 @@ class BookRoom extends Component {
                 </span>
             </div>
 
-            <div className="bajs">
+            <div className="textRoomPerson">
                         <div >    <span className="room">Room</span>  <span className="person"> Person</span>  </div>
                 <div className="selectWrapper">
                     <select onChange={this.handleSelectedRoom}> {roomType} </select>
