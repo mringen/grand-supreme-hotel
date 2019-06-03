@@ -35,7 +35,9 @@ class BookRoom extends Component {
                 calendarFrom: false,
                 calendarTo: false
             })
+
         }, 1000);
+
     }
 
 
@@ -132,7 +134,9 @@ class BookRoom extends Component {
                 </span>
             </div>
 
+
             <div className="searchOptions">
+
                         <div >    <span className="room">Room</span>  <span className="person"> Person</span>  </div>
                 <div className="selectWrapper">
                     <select onChange={this.handleSelectedRoom}> {roomType} </select>
