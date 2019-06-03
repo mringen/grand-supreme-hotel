@@ -12,19 +12,15 @@ import ConfirmBooking from './confirmBooking/ConfirmBooking';
 
 function App() {
 
-
-    // const [bookingState, setBookingState] = useState(null);
-
-
-  return (
-    <Router>
-      <div className="App">
-        <Header
-          landingLink={<Link to="/LandingPage/">Landing </Link>}
-          visionLink={<Link to="/Vision/">vision </Link>}
-          bookingLink={<Link to="/BookRoom/">BookRoom </Link>}
-          roomMakerLink={<Link to="/RoomMaker/"> Admin</Link>}/>
-
+    return (
+      <Router>
+        <div className="App">
+            <Header
+                landingLink={<Link to="/LandingPage/">Landing </Link>}
+                visionLink={<Link to="/Vision/">Vision </Link>}
+                bookingLink={<Link to="/BookRoom/">Book Room </Link>}
+                roomMakerLink={<Link to="/RoomMaker/"> Admin</Link>}
+            />
 
 
             <Route path="/ConfirmBooking" component={ConfirmBooking}/>

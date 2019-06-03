@@ -24,10 +24,9 @@ class RoomMaker extends React.Component{
                     FreeMinibar: 'No',
                     FreeRoomService: 'No',
                     bookings: [
-                      { fromDate: '2019-05-03', toDate: '2019-05-10'},
-                      { fromDate: '2019-05-10', toDate: '2019-05-17'},
-                      { fromDate: '2019-05-31', toDate: '2019-06-05'},
+
                     ]
+                  
                  };
                 const collectionRef = firebase.firestore().collection('HotelRooms');
                 collectionRef.add(obj)
