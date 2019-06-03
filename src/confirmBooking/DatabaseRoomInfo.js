@@ -11,7 +11,6 @@ class DatabaseRoomInfo extends Component{
 
   bamse  = () =>{
   this.setState({confrimDayTo: this.props.wantToBook })
-  console.log(this.state.confrimDayTo);
   }
   render(){
 

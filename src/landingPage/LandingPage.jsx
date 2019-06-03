@@ -25,20 +25,3 @@ class LandingPage extends Component {
     }
 }
  export default LandingPage
- // <div className="activitisMain">
- //   <div className="test">
- //     <div className="resturang">
- //       <div className="resturangText">
- //         <h1>ACTIVITYS</h1>
- //       </div>
- //     </div>
- //     <div className="testTesxt">dawdwdwadwadwadaw wadaw dwa dawd awdwadwadaw dwad wa wa dadwa daw</div>
- //   </div>
- //   <div className="test1">
- //     <p>Waddap dawg</p>
- //   </div>
- //
- //   <div className="facillitys">
- //     Show me!
- //   </div>
- // </div>

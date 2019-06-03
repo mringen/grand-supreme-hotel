@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import './BookRoom.sass'
 import Calendar from 'react-calendar';
 import Database from './../database/Database';
-// import ConfirmBooking from '../confirmBooking/ConfirmBooking';
-// import DatabaseRoomInfo from '../database/DatabaseRoomInfo'
+// import DatabaseRoomInfo from '../confirmBooking/DatabaseRoomInfo'
 // import ConfirmBooking from '../confirmBooking/ConfirmBooking';
 class BookRoom extends Component {
 
@@ -36,7 +35,9 @@ class BookRoom extends Component {
                 calendarFrom: false,
                 calendarTo: false
             })
-        }, 70);
+
+        }, 1000);
+
     }
 
 
@@ -61,6 +62,7 @@ class BookRoom extends Component {
         this.setState({
             showRooms: !this.state.showRooms
         })
+
     }
 
     handleSelectedRoom = (e) => {
@@ -95,13 +97,16 @@ class BookRoom extends Component {
         let showRooms = this.state.showRooms;
         let listOfRooms;
         if (showRooms) {
+
             listOfRooms =
+
             <Database
-            selectedRoomType={this.state.selectedRoomType}
-            renderRooms={this.handleRoomObject}
-            fromDate={this.state.fromDate}
-            toDate={this.state.toDate}
-            showMeState={this.showMeState} />;
+              selectedRoomType={this.state.selectedRoomType}
+              renderRooms={this.handleRoomObject}
+              fromDate={this.state.fromDate}
+              toDate={this.state.toDate} />
+
+
         }
 
         return(
@@ -129,7 +134,9 @@ class BookRoom extends Component {
                 </span>
             </div>
 
-            <div className="textRoomPerson">
+
+            <div className="searchOptions">
+
                         <div >    <span className="room">Room</span>  <span className="person"> Person</span>  </div>
                 <div className="selectWrapper">
                     <select onChange={this.handleSelectedRoom}> {roomType} </select>
@@ -143,9 +150,8 @@ class BookRoom extends Component {
 
             <button className="searchRoomBtn" onClick={this.showRoomsHandler}>Search</button>
 
+                {listOfRooms}
 
-
-            <div className="renderRoom"> {listOfRooms}</div>
 
             </div>
         )
