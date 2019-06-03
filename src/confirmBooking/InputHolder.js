@@ -103,7 +103,7 @@ class InputHolder extends Component{
       value={this.state.email} 	onChange={e => this.setState({email: e.target.value})} placeholder="Please enter email"/>
       <p className="errorMsg">{this.state.emailError}</p>
       <br/>
-
+      
       <h1> You booking </h1>
         <p> Checkin date: <strong> {this.props.bookFrom}</strong></p>
         <p> Checkout date: <strong> {this.props.bookTo} </strong></p>
