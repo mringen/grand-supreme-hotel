@@ -26,11 +26,11 @@ class InputHolder extends Component{
 
 
     if(typeof  this.state.firstName != 'string' ||  this.state.firstName === ""  ){
-      firstNameError = "Pleace enter you firstname";
+      firstNameError = "Pleace enter your First name";
     }
 
     if(typeof  this.state.lastName != 'string' ||  this.state.lastName === ""  ){
-      lastNameError = "Pleace enter you lastname";
+      lastNameError = "Pleace enter your Last name";
     }
 
     if(typeof  this.state.email != 'string' ||  this.state.email === "" || !this.state.email.includes('@') ){
@@ -61,7 +61,7 @@ class InputHolder extends Component{
       userInfo: firebase.firestore.FieldValue.arrayUnion({firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, checkInDay: this.props.bookFrom, checkoutDay: this.props.bookTo})
 
     });
-    console.log('fml');
+
   }
 
 
@@ -71,8 +71,7 @@ class InputHolder extends Component{
     const isValid = this.validation();
     if(isValid) {
       this.updateUserInfoToDataBast();
-      this.props.pushToDataBase();
-      console.log(this.state);
+      this.props.pushToDataBase();;
       this.setState({defaultState});
     }
   };
@@ -90,20 +89,20 @@ class InputHolder extends Component{
 
       <div className="inputHolderPage">
       <input  typ="text"
-      value={this.state.firstName} 	onChange={e => this.setState({firstName: e.target.value})} placeholder="Please endter first name"/>
+      value={this.state.firstName} 	onChange={e => this.setState({firstName: e.target.value})} placeholder="Please enter your First name"/>
       <p className="errorMsg">{this.state.firstNameError}</p>
       <br/>
 
       <input  typ="text"
-      value={this.state.lastName} 	onChange={e => this.setState({lastName: e.target.value})} placeholder="Please enter Lastname"/>
+      value={this.state.lastName} 	onChange={e => this.setState({lastName: e.target.value})} placeholder="Please enter your Last name"/>
       <p className="errorMsg">{this.state.lastNameError}</p>
       <br/>
 
       <input  typ="text"
-      value={this.state.email} 	onChange={e => this.setState({email: e.target.value})} placeholder="Please enter email"/>
+      value={this.state.email} 	onChange={e => this.setState({email: e.target.value})} placeholder="Please enter your Email"/>
       <p className="errorMsg">{this.state.emailError}</p>
       <br/>
-      
+
       <h1> You booking </h1>
         <p> Checkin date: <strong> {this.props.bookFrom}</strong></p>
         <p> Checkout date: <strong> {this.props.bookTo} </strong></p>

@@ -80,7 +80,6 @@ const Database = (props) => {
             let i;
             if (rooms.bookings) {
               for (i = 0; i < bookings.length; i++) {
-                console.log(bookings[i])
                 if((falseToDate <= bookings[i].fromDate && falseFromDate < bookings[i].toDate) || (falseToDate > bookings[i].fromDate && falseFromDate > bookings[i].toDate) ) {
                   counter ++;
                 }
