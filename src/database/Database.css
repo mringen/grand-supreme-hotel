@@ -1,4 +1,6 @@
-
+/* body {
+    background-color: snow;
+} */
 .Rooms {
   display: flex;
   flex-direction: column;
@@ -16,10 +18,34 @@
     flex-direction: column;
   }
   img {
-    width: 100%
+    width: 100%;
   }
+}
+.roomImg {
+    border-radius: 8px;
+    margin-left: 1em
 }
 
 .btnToConfirm > a{
   color: black;
+}
+.roomType {
+}
+.roomInfo {
+    width: 84%;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    text-align: left;
+}
+.roomStats {
+    margin-left: 2em;
+    text-align: left;
+}
+.goToConfirmBtn {
+    border-radius: 8px;
+    padding: 0.5em;
+    border: solid black 1px;
+}
+.goToConfirmBtn:hover {
+    cursor: pointer;
 }

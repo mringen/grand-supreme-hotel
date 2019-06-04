@@ -7,6 +7,9 @@
     font-size: 20px
     text-align: center
 
+.bookRoomImg
+    width: 100%
+
 .person
     margin-left: 100px
 .room
@@ -17,8 +20,8 @@
     margin: 1.2em
     margin-top: 10px
     margin-bottom: 0
-    font-size: 20px
-    padding: 10px
+    font-size: 1em
+    padding: 50px
     text-align: center
 
 .borderSearch
@@ -40,7 +43,7 @@
         color: white
 
 
-.bajs
+.searchOptions
     display: block
     @media screen and (max-width:850px)
 
@@ -50,7 +53,14 @@
 .selectWrapper
     justify-content: center
     display: flex
+    margin: 10px
 
+select
+    height: 2.5em
+    background-color: white
+    font-size: 4.3em
+    font-weight:normal
+    cursor: pointer
 
 .containerInput
     outline: none
@@ -65,13 +75,15 @@
     cursor: pointer
 
 span
-    font-size: 1.3em
+    font-size: 1em
 
 .dateValue
     margin: 20px
-    border-radius: 10px
+    border: solid black 1px
+    border-radius: 5px
     background-color: white
     font-size: 1em
+    cursor: pointer
 
     @media screen  and (max-width:850px)
         margin: 10px
@@ -88,8 +100,12 @@ span
     transform: scale(0.8)
     position: absolute
     font-size: 0.5
+
 .searchRoomBtn
-    border-radius: 10px
+    box-shadow: 1px 1px 1px 1px
+    border-radius: 8px
     padding: 0.5em
     font-size: 1em
+    text-align: center
     margin-top: 1.3em
+    cursor: pointer
