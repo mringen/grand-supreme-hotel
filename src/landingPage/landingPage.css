@@ -1,6 +1,10 @@
 /*Css for hero img starts*/
+.landingPageMain {
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+}
 .hero-container {
-  height: 50vw;
+  height: 35vw;
   margin: 0;
 }
 .hero-image {
@@ -13,7 +17,6 @@
 }
 
 .hero-text {
-  font-size: 20px;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -24,11 +27,11 @@
 
  .callToAction {
    margin-top: 4vw;
-  font-size: 2vw;
+
   border: none;
   outline: 0;
   display: inline-block;
-  padding: 7px 10px;
+  padding: 5px;
   color: white;
   background-color: black;
   text-align: center;
@@ -40,87 +43,92 @@
   color: black;
 }
 /*Css for hero img ends*/
+.hotelInfoMain {
+  color: #493B2B;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 15px;
+  text-align: center;
+}
+.hotelInfoWrapper {
+  border-top: 3px solid black;
+  width: 80%;
+}
+.hotelInfoMain h3 {
+    padding: 10px;
+    display: inline-block;
+    font-weight: bold;
+}
+.hotelInfoMain p {
+  font-size: 18px
+}
+ .displayActivitsMain {
+   display: flex;
+   margin: 5px;
+   justify-content: space-between;
+ }
 
-.activitisMain {
-  margin: 10px;
-  border: 1px solid black;
+.activityBox {
   display: flex;
   flex-direction: column;
-  height: 75vw;
-
-}
-.activitisMain div {
-  margin: 10px;
-
+  justify-content: flex-end;
+  color: white;
+  height: 30vw;
+  width: 32vw;
+  border-radius: 8px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
-.activitis {
-  background-image: url('../shared/img/adam-wilson-416248-unsplash.jpg');
-}
-.resturang {
-  background-image: url('../shared/img/surfer-2212948_640.jpg');
-  display: flex;
-}
-.test {
-  display: flex;
-  height: 34%
-}
-.facillitys {
-  background-image: url('../shared/img/kaos.jpg');
-  height: 60%
-}
-.resturang {
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
+.activityButton {
+  background-color: black;
+  padding: 5px;
+  border: none;
   color: white;
-  height: 100%;
-  width: 50%;
 }
-.testTesxt {
-  border: 1px solid black;
-  width: 40%;
-  height: 100%;
-  text-align: center;
+.activityButton:hover {
+  background-color: white;
+  color: black;
 }
-.test1 {
-  height: 15%;
-  border: 1px solid black;
-  width: 80%;
-  align-self: center;
+.activityText {
+  margin: 15px;
+  text-align: left;
 }
+.one {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../shared/img/surfer-2212948_640.jpg');
+}
+.two {
+  align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../shared/img/bar-1869656_640.jpg');
+}
+.three {
+    align-items: flex-end;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../shared/img/massage-therapy-1584711_640.jpg');
+}
+.hotelFacility {
+  width: auto;
+  height: 400px;
 
-@media screen and (max-width: 768px) {
-  h1 {
-    font-size: 30px;
+}
+@media screen and (max-width: 500px) {
+  .hero-container {
+    height: 55vw;
+    margin: 0;
   }
-
-  .hero-text button {
-    color: white;
-  }
-  .activitisMain {
+  .displayActivitsMain {
+    display: flex;
     flex-direction: column;
-    height: 500px;
-
   }
-  .activitisMain div {
-    margin: 10px;
+  .activityBox {
     width: auto;
-    height: 30vw;
-    justify-content: space-around;
+    height: 55vw;
+    margin: 1vw;
   }
 
 }
-@media screen and (max-width: 450px) {
-  h1 {
-    font-size: 20px;
-    width: 300px;
-  }
-  .callToAction {
+@media screen and (max-width: 768px) {
 
-    font-size: 12px;
-  }
 }

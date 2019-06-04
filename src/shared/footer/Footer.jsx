@@ -31,9 +31,9 @@ class Footer extends Component {
 
               <div className="fontAwsomeIcons">
                 <div className="innerFont">
-                  <FontAwesomeIcon className="icons" icon={faInstagram} size="5x" />
-                  <FontAwesomeIcon className="icons" icon={faFacebookSquare} size="5x" />
-                  <FontAwesomeIcon className="icons" icon={faTwitterSquare} size="5x" />
+                  <FontAwesomeIcon className="icons" icon={faInstagram} size="4x" />
+                  <FontAwesomeIcon className="icons" icon={faFacebookSquare} size="4x" />
+                  <FontAwesomeIcon className="icons" icon={faTwitterSquare} size="4x" />
                 </div>
               </div>
             </div>
