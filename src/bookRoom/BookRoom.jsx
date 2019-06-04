@@ -148,7 +148,7 @@ class BookRoom extends Component {
 
 
 
-                <button onClick={this.showRoomsHandler}>Show Rooms</button>
+                <button className="showRoom"onClick={this.showRoomsHandler}>Show Rooms</button>
                 {listOfRooms}
 
 
