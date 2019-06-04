@@ -37,7 +37,6 @@ class BookRoom extends Component {
             })
 
         }, 1000);
-
     }
 
 
