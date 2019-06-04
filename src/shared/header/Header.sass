@@ -1,0 +1,102 @@
+@import '../sharedStyle.sass'
+h4
+  text-align: center
+
+li
+  list-style: none
+
+.not-active-burger
+  display: none
+
+.navMainContainer
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)))
+  line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)))
+  display: flex
+  justify-content: space-around
+  align-items: center
+  min-height: 8vh
+  background-color: black
+
+
+.loggo
+  color: white
+  text-align: center
+  text-transform: uppercase
+  letter-spacing: 5px
+
+.navLinks
+
+  display: flex
+  justify-content: space-around
+  width: auto
+  text-decoration: none
+.navLinks a:hover
+  border-bottom: 2px solid white
+
+a
+  color: white
+  text-decoration: none
+  letter-spacing: 3px
+  font-weight: bold
+
+.navLinks li
+  list-style: none
+  padding-right: 15px
+  padding-left: 15px
+
+  border-right: 2px solid white
+.navLinks li:last-child
+  border: none
+
+
+//Burger CSS at big screen
+.burger
+  display: none
+
+.burger div
+  width: 25px
+  height: 3px
+  background-color: white
+  margin: 5px
+
+.active-burger
+  display: none
+  font-size: 20px
+
+
+  //Burger CSS at mobile
+
+@media screen and (max-width: 568px)
+  body
+   overflow-x: hidden
+  h4
+   text-align: center
+   margin-left: 10px
+  .navMainContainer
+
+  .navLinks li
+    display: none
+  .burger
+    display: block
+    cursor: pointer
+    margin-right: 10px
+  .active-burger
+     border-top: 2px solid white
+     position: absolute
+     right: 0px
+     height: 100vw
+     top: 8vh
+     background-color: black
+     display: flex
+     flex-direction: column
+     align-items: center
+     height: 100%
+     width: 100%
+     transform: translateX(0%)
+     transition: transform 0.5s ease-in
+     z-index: 100
+
+  .active-burger li
+      padding: 10px
+      margin: 10px
+      border-bottom: 2px solid white

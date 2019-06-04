@@ -1,0 +1,134 @@
+/*Css for hero img starts*/
+.landingPageMain {
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+}
+.hero-container {
+  height: 35vw;
+  margin: 0;
+}
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../shared/img/hotel hero.img.1.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+ .callToAction {
+   margin-top: 4vw;
+
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 5px;
+  color: white;
+  background-color: black;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: white;
+  color: black;
+}
+/*Css for hero img ends*/
+.hotelInfoMain {
+  color: #493B2B;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 15px;
+  text-align: center;
+}
+.hotelInfoWrapper {
+  border-top: 3px solid black;
+  width: 80%;
+}
+.hotelInfoMain h3 {
+    padding: 10px;
+    display: inline-block;
+    font-weight: bold;
+}
+.hotelInfoMain p {
+  font-size: 18px
+}
+ .displayActivitsMain {
+   display: flex;
+   margin: 5px;
+   justify-content: space-between;
+ }
+
+.activityBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  height: 30vw;
+  width: 32vw;
+  border-radius: 8px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.activityButton {
+  background-color: black;
+  padding: 5px;
+  border: none;
+  color: white;
+}
+.activityButton:hover {
+  background-color: white;
+  color: black;
+}
+.activityText {
+  margin: 15px;
+  text-align: left;
+}
+.one {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../shared/img/surfer-2212948_640.jpg');
+}
+.two {
+  align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../shared/img/bar-1869656_640.jpg');
+}
+.three {
+    align-items: flex-end;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../shared/img/massage-therapy-1584711_640.jpg');
+}
+.hotelFacility {
+  width: auto;
+  height: 400px;
+
+}
+@media screen and (max-width: 500px) {
+  .hero-container {
+    height: 55vw;
+    margin: 0;
+  }
+  .displayActivitsMain {
+    display: flex;
+    flex-direction: column;
+  }
+  .activityBox {
+    width: auto;
+    height: 55vw;
+    margin: 1vw;
+  }
+
+}
+@media screen and (max-width: 768px) {
+
+}
