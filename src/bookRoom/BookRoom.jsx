@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import './BookRoom.sass'
 import Calendar from 'react-calendar';
 import Database from './../database/Database';
-// import DatabaseRoomInfo from '../confirmBooking/DatabaseRoomInfo'
-// import ConfirmBooking from '../confirmBooking/ConfirmBooking';
+
+import RoomView from './../shared/roomIMG/roomView.jpeg';
+
 class BookRoom extends Component {
 
 
@@ -113,7 +114,7 @@ class BookRoom extends Component {
 
             <div className="bookContainer">
             <div className="titleWrapper" >
-            <img className="teamImg" alt="not working" src="https://www.travelmarket.se/gfx/top/hotel_01.jpg"/>
+            <img className="bookRoomImg" alt="not working" src={RoomView}/>
             </div>
 
             <div className="borderSearch">
@@ -133,9 +134,7 @@ class BookRoom extends Component {
                 </span>
             </div>
 
-
             <div className="searchOptions">
-
                         <div >    <span className="room">Room</span>  <span className="person"> Person</span>  </div>
                 <div className="selectWrapper">
                     <select onChange={this.handleSelectedRoom}> {roomType} </select>
@@ -149,7 +148,8 @@ class BookRoom extends Component {
 
             <button className="searchRoomBtn" onClick={this.showRoomsHandler}>Search</button>
 
-                {listOfRooms}
+
+            <div className="renderRoom"> {listOfRooms}</div>
 
 
             </div>
