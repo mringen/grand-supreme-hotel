@@ -16,10 +16,9 @@ function App() {
       <Router>
         <div className="App">
             <Header
-                landingLink={<Link to="/LandingPage/">Landing </Link>}
+                landingLink={<Link to="/LandingPage/">Home </Link>}
                 visionLink={<Link to="/Vision/">Vision </Link>}
                 bookingLink={<Link to="/BookRoom/">Book Room </Link>}
-                roomMakerLink={<Link to="/RoomMaker/"> Admin</Link>}
             />
 
 
@@ -35,3 +34,4 @@ function App() {
 }
 
 export default App;
+// roomMakerLink={<Link to="/RoomMaker/"> Admin</Link>}
