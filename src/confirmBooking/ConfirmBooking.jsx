@@ -27,7 +27,6 @@ updateData = () => {
 });
 
 
-  console.log('the is bookt');
 	}
 
 

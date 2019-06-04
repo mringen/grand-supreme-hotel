@@ -35,7 +35,9 @@ class BookRoom extends Component {
                 calendarFrom: false,
                 calendarTo: false
             })
-        }, 40);
+
+        }, 1000);
+
     }
 
 
@@ -132,7 +134,9 @@ class BookRoom extends Component {
                 </span>
             </div>
 
-            <div className="bajs">
+
+            <div className="searchOptions">
+
                         <div >    <span className="room">Room</span>  <span className="person"> Person</span>  </div>
                 <div className="selectWrapper">
                     <select onChange={this.handleSelectedRoom}> {roomType} </select>
@@ -146,9 +150,6 @@ class BookRoom extends Component {
 
             <button className="searchRoomBtn" onClick={this.showRoomsHandler}>Search</button>
 
-
-
-                <button className="showRoom"onClick={this.showRoomsHandler}>Show Rooms</button>
                 {listOfRooms}
 
 
