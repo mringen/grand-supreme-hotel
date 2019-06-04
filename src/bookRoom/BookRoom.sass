@@ -1,36 +1,34 @@
 @import '../shared/sharedStyle.sass'
 
 .bookContainer
+    height: 90%
+    text-align: center
+    border: solid black 1px
+    font-size: 20px
+    text-align: center
 
-    height: 100%
-    width: 100%
-    padding: 1em
+.person
+    margin-left: 100px
+.room
+    margin-left: 20px
 
-    h1
-        margin-bottom: 1em
-    input
-        outline: none
-        height: 1.8em
-        width: 10em
-        font-size: 1.2em
-        border-radius: 10px
-    select
-        background-color: white
-        height: 2em
-        width: 100%
-        font-size: 1.3em
+.bookContainer select
+    border: solid  1px
+    margin: 1.2em
+    margin-top: 10px
+    margin-bottom: 0
+    font-size: 20px
+    padding: 10px
+    text-align: center
 
-    .dateTo
-        &:hover
-        cursor: pointer
-
-    span
-        font-size: 1.3em
-
-    .dateValue
-        margin-bottom: 1em
+.borderSearch
+    display: flex
+    justify-content: center
+    @media screen and (max-width:850px)
+        margin: 10px
         display: block
-        height: 300px
+
+          height: 300px
 
 .bookContainer > button
     margin: 20px
@@ -43,7 +41,7 @@
         color: white
 
 
-.bajs
+.searchOptions
     display: block
     @media screen and (max-width:850px)
 
@@ -96,3 +94,4 @@ span
     padding: 0.5em
     font-size: 1em
     margin-top: 1.3em
+

@@ -22,7 +22,7 @@ class Vision extends Component {
 
                      <div className="row" >
                      <div>
-                     <h3> bajs</h3>
+
                      </div>
                       </div>
 

@@ -5,6 +5,7 @@ import {  Link } from "react-router-dom";
 
 import './Database.css'
 
+
 const Database = (props) => {
   let loggo;
   let roomInfo;
@@ -28,8 +29,12 @@ const Database = (props) => {
         })
     }, []);
 
+
+
+
     let listRoom = null;
     if(roomData) {
+
         listRoom = roomData.map(rooms => {
 
 
@@ -75,12 +80,14 @@ const Database = (props) => {
             let i;
             if (rooms.bookings) {
               for (i = 0; i < bookings.length; i++) {
-                console.log(bookings[i])
                 if((falseToDate <= bookings[i].fromDate && falseFromDate < bookings[i].toDate) || (falseToDate > bookings[i].fromDate && falseFromDate > bookings[i].toDate) ) {
                   counter ++;
                 }
               }
               if(counter === i){
+
+
+
                 return <li className="Room"key={rooms.id}><img src={loggo} alt="Smiley face" height="242" width="342" /><div><h3>{rooms.roomType}</h3>{roomInfo}{roomStats}
                   <Link
     to={{
@@ -89,6 +96,7 @@ const Database = (props) => {
         checkInDate: props.fromDate,
         checkOutDate: props.toDate,
         roomId: rooms.id,
+        roomType: rooms.roomType,
 
       }
     }}
@@ -111,6 +119,7 @@ const Database = (props) => {
                 checkInDate: props.fromDate,
                 checkOutDate: props.toDate,
                 roomId: rooms.id,
+                  roomType: rooms.roomType,
               }
             }}
 
@@ -120,8 +129,12 @@ const Database = (props) => {
                 </div></li>
             }
         }
+
         return listRoom
     })
+
+
+
 };
 
         return(
