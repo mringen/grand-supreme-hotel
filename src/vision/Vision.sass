@@ -11,7 +11,7 @@
 
 .teamTitle
   padding: 20px
-  @media screen and (max-width: 768px)
+  @media screen and (max-width: 850px)
     margin: 0 auto
     font-size: 30px
 
@@ -35,7 +35,11 @@
 .feelGoodWrapper
   display: flex
   padding: 5px
-
+  @media screen and (max-width: 850px)
+    position: relative
+    display: block
+    margin: 10px
+    margin-left: 0
 
 .feelGoodImg
   height: 200px
@@ -46,6 +50,11 @@
   background-repeat: no-repeat
   border-radius: 5px 5px
   width: 33%
+  background-position: center
+  position: relative
+  @media screen and (max-width: 850px)
+    width: 100%
+
 
 .mrClean
   background-image: url('../shared/picForVision/clean.jpg')
@@ -54,6 +63,10 @@
   background-size: cover
   border-radius: 5px 5px
   width: 33%
+  position: relative
+  @media screen and (max-width: 850px)
+    width: 100%
+
 
 .massage
   background-image: url('../shared/picForVision/massage.jpg')
@@ -62,21 +75,44 @@
   background-size: cover
   border-radius: 5px 5px
   width: 33%
+  position: relative
+  @media screen and (max-width: 850px)
+    width: 100%
 
 .feelGoodWrapper > div
   height: 650px
   margin: 5px
+  &:hover
+    transform: scale(1.02)
+    transition: 1.05s
 
 .feelGoodWrapper div > p
   color: black
-  margin-top: 90%
-  font-weight: bold
+  font-size: 15px
+  margin-top: 10px
 
+  @media screen and (max-width: 1200px)
+    font-size: 18px
 .feelGoodWrapper h1
   color: snow
 
 
 .feelGoodWrapper div > div
   background-color: $tan-color
-  opacity: 0.7s
-  height: 200px
+  opacity: 0.9
+  height: 193px
+  border-radius: 5px 5px
+  bottom: 0
+  position: absolute
+  padding: 10px
+
+.aboutUs
+  display: flex
+  justify-content: center
+  margin: 20px
+  @media screen and (max-width: 850px)
+    display: block
+.aboutUs div > img
+  border-radius: 50px 50px
+  width: 300px
+  margin: 20px
